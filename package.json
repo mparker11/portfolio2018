@@ -6,6 +6,7 @@
     "@curi/core": "^1.0.0-beta.27",
     "@curi/react": "^1.0.0-beta.20",
     "@hickory/browser": "^1.0.0-beta.6",
+    "firebase": "^4.11.0",
     "node-sass-chokidar": "^1.1.2",
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",

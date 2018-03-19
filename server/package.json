@@ -26,6 +26,7 @@
     "@curi/react": "^1.0.0-beta.20",
     "@hickory/in-memory": "^1.0.0-beta.4",
     "babel-plugin-dynamic-import-node": "^1.2.0",
-    "dotenv": "^4.0.0"
+    "dotenv": "^4.0.0",
+    "firebase": "^4.11.0"
   }
 }

@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'BasilRegular';
+  src: url("https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FBasil%20Regular.otf?alt=media&token=8e717550-68b0-4e39-ade2-c3b643ffb544") format("opentype"); }
+
+@font-face {
+  font-family: 'BasilLight';
+  src: url("https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FBasil%20Light.otf?alt=media&token=858c9df2-2e4e-48b0-8f30-9ebd8dc1735e") format("opentype"); }
+
+@font-face {
+  font-family: 'BasilBold';
+  src: url("https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FBasil%20Bold.otf?alt=media&token=e6454069-d571-4e9d-ba65-a9df573b4363") format("opentype"); }
+
+@font-face {
+  font-family: 'HelveticaNeueThin';
+  src: url("https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FHelveticaNeue-Thin.otf?alt=media&token=5862610d-dc9c-4954-92de-0f11077512f9") format("opentype"); }
+
+@font-face {
+  font-family: 'SoinSanNeueMedium';
+  src: url("https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FStawix%20-%20SoinSansNeue-Medium_0.otf?alt=media&token=42ca41b4-1ff1-4dc7-8e64-4dd0d2e0f89e") format("opentype"); }
+
+@font-face {
+  font-family: 'SoinSanNeueRoman';
+  src: url("https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FStawix%20-%20SoinSansNeue-Roman_0.otf?alt=media&token=6d947292-4114-4485-9cdb-1f75af27a080") format("opentype"); }
+
+html, body {
+  margin: 0;
+  padding: 0; }
+  html *, body * {
+    font-family: 'SoinSanNeueRoman'; }
