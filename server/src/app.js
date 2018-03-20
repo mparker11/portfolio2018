@@ -9,6 +9,7 @@ const InMemory = require('@hickory/in-memory');
 const { CuriProvider } = require('@curi/react');
 const { default: routes } = require('../../src/routes');
 const { default: firebaseConfig } = require('../../src/firebase.config');
+import Layout from '../../src/components/Layout';
 
 const memoryHistory = InMemory();
 const router = curi(memoryHistory, routes);
@@ -19,7 +20,11 @@ const app = createReactAppExpress({
     universalRender: handleUniversalRender(
         <CuriProvider router={ router }>
             {({ response }) => {
-                return <response.body />;
+                return (
+                    <Layout>
+                        <response.body />
+                    </Layout>
+                );
             }}
         </CuriProvider>
     )

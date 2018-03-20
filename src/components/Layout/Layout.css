@@ -29,3 +29,8 @@ html, body {
   html *, body * {
     font-family: 'SoinSanNeueRoman';
     color: #222; }
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0; }

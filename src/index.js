@@ -8,6 +8,7 @@ import Browser from '@hickory/browser';
 import { CuriProvider } from '@curi/react';
 import routes from './routes';
 import firebaseConfig from './firebase.config';
+import Layout from './components/Layout';
 
 const history = Browser();
 const router = curi(history, routes);
@@ -20,7 +21,11 @@ router.respond(() => {
     ReactDOM.hydrate((
         <CuriProvider router={ router }>
             {({ response }) => {
-                return <response.body />;
+                return (
+                    <Layout>
+                        <response.body />
+                    </Layout>
+                );
             }}
         </CuriProvider>
     ), root);
