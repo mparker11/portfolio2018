@@ -1,18 +1,176 @@
+@import '../../assets/css/variables.scss';
+
 .home-page {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
-    .title {
-        text-align: center;
-        font-family: 'BasilBold';
-        font-weight: normal;
+    .intro {
+        @include transition(all .3s ease);
+
+        .title {
+            text-align: center;
+            font-family: 'BasilLight';
+            font-weight: normal;
+            margin: 0;
+            font-size: 9vw;
+        }
+        .subtitle {
+            text-align: center;
+            font-family: 'HelveticaNeueThin';
+            font-weight: normal;
+            margin: 0;
+            font-size: 2.25vw;
+            line-height: 1;
+            letter-spacing: 4px;
+        }
     }
-    .subtitle {
-        text-align: center;
-        font-family: 'HelveticaNeueThin';
-        font-weight: normal;
+    .home-link {
+        position: absolute;
+        width: 50vw;
+        height: 50vh;
+        z-index: 1;
+
+        .inner-link {
+            position: absolute;
+            width: 100%;
+
+            img {
+                position: absolute;
+                @include transition(all .3s ease);
+
+                &.gradient {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+            p {
+                position: absolute;
+                margin: 0;
+                font-size: 2.25vw;
+                color: $light_gray;
+                @include transition(all .3s ease);
+            }
+        }
+        &:hover {
+            & ~ .intro {
+                opacity: 0.25;
+            }
+            .inner-link {
+                img {
+                    &.default {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    &.gradient {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+                p {
+                    color: $dark_gray;
+                    font-size: 2.5vw;
+                }
+            }
+        }
+        &.resume-link {
+            left: 0;
+            bottom: 0;
+
+            .inner-link {
+                left: -18px;
+                bottom: -18px;
+                
+                img {
+                    width: 28%;
+                    left: 0;
+                    bottom: 0;
+                }
+                p {
+                    left: 30%;
+                    bottom: 80px;
+                }
+            }
+            &:hover {
+                .inner-link {
+                    img {
+                        width: 45%;
+                    }
+                    p {
+                        left: 47%;
+                        bottom: 130px;
+                    }
+                }
+            }
+        }
+        &.freelance-link {
+            right: 0;
+            top: 0;
+
+            .inner-link {
+                right: -18px;
+                top: -18px;
+                
+                img {
+                    width: 20%;
+                    right: 0;
+                    top: 0;
+                }
+                p {
+                    right: 20%;
+                    top: 80px;
+                }
+            }
+            &:hover {
+                .inner-link {
+                    img {
+                        width: 35%;
+                    }
+                    p {
+                        right: 33%;
+                        top: 130px;
+                    }
+                }
+            }
+        }
+    }
+    .personal-info {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 50vw;
+        height: 50vh;
+
+        .inner-info {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+
+            img {
+                width: 15%;
+                margin-right: 35px;
+                margin-bottom: 25px;
+            }
+            .contact {
+                text-align: right;
+                margin-right: 20px;
+                margin-bottom: 25px;
+    
+                a {
+                    font-size: 1.25vw;
+                    text-decoration: none;
+                    line-height: 1.25;
+                    
+                    &:hover {
+                        color: $link_blue;
+                    }
+                }
+            }
+        }
     }
 }

@@ -3,12 +3,126 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center; }
-  .home-page .title {
-    text-align: center;
-    font-family: 'BasilBold';
-    font-weight: normal; }
-  .home-page .subtitle {
-    text-align: center;
-    font-family: 'HelveticaNeueThin';
-    font-weight: normal; }
+  align-items: center;
+  position: relative; }
+  .home-page .intro {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .home-page .intro .title {
+      text-align: center;
+      font-family: 'BasilLight';
+      font-weight: normal;
+      margin: 0;
+      font-size: 9vw; }
+    .home-page .intro .subtitle {
+      text-align: center;
+      font-family: 'HelveticaNeueThin';
+      font-weight: normal;
+      margin: 0;
+      font-size: 2.25vw;
+      line-height: 1;
+      letter-spacing: 4px; }
+  .home-page .home-link {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    z-index: 1; }
+    .home-page .home-link .inner-link {
+      position: absolute;
+      width: 100%; }
+      .home-page .home-link .inner-link img {
+        position: absolute;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease; }
+        .home-page .home-link .inner-link img.gradient {
+          opacity: 0;
+          visibility: hidden; }
+      .home-page .home-link .inner-link p {
+        position: absolute;
+        margin: 0;
+        font-size: 2.25vw;
+        color: #cfcfcf;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease; }
+    .home-page .home-link:hover ~ .intro {
+      opacity: 0.25; }
+    .home-page .home-link:hover .inner-link img.default {
+      opacity: 0;
+      visibility: hidden; }
+    .home-page .home-link:hover .inner-link img.gradient {
+      opacity: 1;
+      visibility: visible; }
+    .home-page .home-link:hover .inner-link p {
+      color: #222;
+      font-size: 2.5vw; }
+    .home-page .home-link.resume-link {
+      left: 0;
+      bottom: 0; }
+      .home-page .home-link.resume-link .inner-link {
+        left: -18px;
+        bottom: -18px; }
+        .home-page .home-link.resume-link .inner-link img {
+          width: 28%;
+          left: 0;
+          bottom: 0; }
+        .home-page .home-link.resume-link .inner-link p {
+          left: 30%;
+          bottom: 80px; }
+      .home-page .home-link.resume-link:hover .inner-link img {
+        width: 45%; }
+      .home-page .home-link.resume-link:hover .inner-link p {
+        left: 47%;
+        bottom: 130px; }
+    .home-page .home-link.freelance-link {
+      right: 0;
+      top: 0; }
+      .home-page .home-link.freelance-link .inner-link {
+        right: -18px;
+        top: -18px; }
+        .home-page .home-link.freelance-link .inner-link img {
+          width: 20%;
+          right: 0;
+          top: 0; }
+        .home-page .home-link.freelance-link .inner-link p {
+          right: 20%;
+          top: 80px; }
+      .home-page .home-link.freelance-link:hover .inner-link img {
+        width: 35%; }
+      .home-page .home-link.freelance-link:hover .inner-link p {
+        right: 33%;
+        top: 130px; }
+  .home-page .personal-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50vw;
+    height: 50vh; }
+    .home-page .personal-info .inner-info {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end; }
+      .home-page .personal-info .inner-info img {
+        width: 15%;
+        margin-right: 35px;
+        margin-bottom: 25px; }
+      .home-page .personal-info .inner-info .contact {
+        text-align: right;
+        margin-right: 20px;
+        margin-bottom: 25px; }
+        .home-page .personal-info .inner-info .contact a {
+          font-size: 1.25vw;
+          text-decoration: none;
+          line-height: 1.25; }
+          .home-page .personal-info .inner-info .contact a:hover {
+            color: #3f59ff; }
