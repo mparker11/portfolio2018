@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as PIXI from 'pixi.js';
 
 import './Home.css';
 
@@ -7,37 +6,37 @@ class Home extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            view: null
-        };
-
-        this.width = window.outerWidth;
-        this.height = window.outerHeight;
-        this.animationCount = 0;
-        this.cbc = { var: -1.5 };
-        this.cbd = { var: 2 };
-        this.sr = 0.75;
-        this.sb = 0.0;
-        this.sg = 0.0;
-
         this.animate = this.animate.bind(this);
     }
 
     componentDidMount() {
-        this.renderBackground();
+        // import * as PIXI from 'pixi.js';
+        import('pixi.js').then((PIXI) => {
+            this.PIXI = PIXI;
+            this.width = window.outerWidth;
+            this.height = window.outerHeight;
+            this.animationCount = 0;
+            this.cbc = { var: -1.5 };
+            this.cbd = { var: 2 };
+            this.sr = 0.75;
+            this.sb = 0.0;
+            this.sg = 0.0;
+    
+            this.renderBackground();
+        })
     }
 
     renderBackground() {
-        this.renderer = new PIXI.autoDetectRenderer(this.width, this.height);
+        this.renderer = new this.PIXI.autoDetectRenderer(this.width, this.height);
         document.body.appendChild(this.renderer.view);
         
-        this.stage = new PIXI.Container();
+        this.stage = new this.PIXI.Container();
         this.getShader();
     }
     
     getShader() {
         import('./shader').then(({ default: shaderCode }) => {
-            this.smokeShader = new PIXI.Filter('', shaderCode);
+            this.smokeShader = new this.PIXI.Filter('', shaderCode);
             
             this.smokeShader.uniforms.resolution[0] = this.width;
             this.smokeShader.uniforms.resolution[1] = this.height;
@@ -49,7 +48,7 @@ class Home extends Component {
             this.smokeShader.uniforms.sb = this.sb;
             this.smokeShader.uniforms.sb = this.sb;
 
-            let bg = PIXI.Sprite.fromImage('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fbackground.jpg?alt=media&token=c197c26d-9ade-42b2-a263-37866f31ebab');
+            let bg = this.PIXI.Sprite.fromImage('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fbackground.jpg?alt=media&token=c197c26d-9ade-42b2-a263-37866f31ebab');
             bg.width = this.width;
             bg.height = this.height;
             bg.filters = [this.smokeShader];
@@ -103,8 +102,6 @@ class Home extends Component {
                         <img alt="" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FContactCard%20icon.svg?alt=media&token=2adba449-b435-480d-b759-9c9c476d675c" />
                     </div>
                 </div>
-                { this.state.view !== null &&
-                    <this.state.view /> }
             </div>
         );
     }
