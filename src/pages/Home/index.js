@@ -11,44 +11,65 @@ class Home extends Component {
             view: null
         };
 
+        this.width = window.outerWidth;
+        this.height = window.outerHeight;
+        this.animationCount = 0;
+        this.cbc = { var: -1.5 };
+        this.cbd = { var: 2 };
+        this.sr = 0.75;
+        this.sb = 0.0;
+        this.sg = 0.0;
+
         this.animate = this.animate.bind(this);
     }
 
     componentDidMount() {
         this.renderBackground();
-        this.getShader();
     }
 
     renderBackground() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        this.renderer = new PIXI.autoDetectRenderer(width, height);
+        this.renderer = new PIXI.autoDetectRenderer(this.width, this.height);
         document.body.appendChild(this.renderer.view);
         
         this.stage = new PIXI.Container();
-        // Load an image and create an object
-        this.logo = PIXI.Sprite.fromImage("http://www.goodboydigital.com/pixijs/pixi_v3_github-pad.png");
-        // Set it at the center of the screen
-        this.logo.x = width / 2;
-        this.logo.y = height / 2;
-        // Make sure the center point of the image is at its center, instead of the default top left
-        this.logo.anchor.set(0.5);
-        // Add it to the screen
-        this.stage.addChild(this.logo);
-
-        this.animate();
+        this.getShader();
     }
     
+    getShader() {
+        import('./shader').then(({ default: shaderCode }) => {
+            this.smokeShader = new PIXI.Filter('', shaderCode);
+            
+            this.smokeShader.uniforms.resolution[0] = this.width;
+            this.smokeShader.uniforms.resolution[1] = this.height;
+            this.smokeShader.uniforms.time = 0.0;
+            this.smokeShader.uniforms.cd = this.cbd.var;
+            this.smokeShader.uniforms.cb = this.cbc.var;
+            this.smokeShader.uniforms.sr = this.sr;
+            this.smokeShader.uniforms.sg = this.sg;
+            this.smokeShader.uniforms.sb = this.sb;
+            this.smokeShader.uniforms.sb = this.sb;
+
+            let bg = PIXI.Sprite.fromImage('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fbackground.jpg?alt=media&token=c197c26d-9ade-42b2-a263-37866f31ebab');
+            bg.width = this.width;
+            bg.height = this.height;
+            bg.filters = [this.smokeShader];
+            this.stage.addChildAt(bg, 0);
+            
+            this.animate();
+        });
+    }
+
     animate() {
         requestAnimationFrame(this.animate);
         this.renderer.render(this.stage);
-    }
 
-    getShader() {
-        import('./shader').then(({ default: code }) => {
-            const simpleShader = new PIXI.Filter('', code);
-            this.logo.filters = [simpleShader]
-        });
+        this.animationCount += 0.08;
+        this.smokeShader.uniforms.time = this.animationCount;
+        this.smokeShader.uniforms.cb = this.cbc.var;
+        this.smokeShader.uniforms.cd = this.cbd.var;
+        this.smokeShader.uniforms.sr = this.sr;
+        this.smokeShader.uniforms.sb = this.sb;
+        this.smokeShader.uniforms.sg = this.sg;
     }
 
     render() {

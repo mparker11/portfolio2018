@@ -9,6 +9,7 @@
     position: relative;
 
     .intro {
+        margin-top: -20px;
         @include transition(all .3s ease);
 
         .title {
