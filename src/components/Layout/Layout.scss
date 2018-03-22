@@ -2,27 +2,27 @@
 
 @font-face {
     font-family: 'BasilRegular';
-    src: url('../../assets/fonts/BasilRegular.otf') format('opentype');
+    src: url('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FBasil%20Regular.otf?alt=media&token=8e717550-68b0-4e39-ade2-c3b643ffb544') format('opentype');
 }
 @font-face {
     font-family: 'BasilLight';
-    src: url('../../assets/fonts/BasilLight.otf') format('opentype');
+    src: url('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FBasil%20Light.otf?alt=media&token=858c9df2-2e4e-48b0-8f30-9ebd8dc1735e') format('opentype');
 }
 @font-face {
     font-family: 'BasilBold';
-    src: url('../../assets/fonts/BasilBold.otf') format('opentype');
+    src: url('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FBasil%20Bold.otf?alt=media&token=e6454069-d571-4e9d-ba65-a9df573b4363') format('opentype');
 }
 @font-face {
     font-family: 'HelveticaNeueThin';
-    src: url('../../assets/fonts/HelveticaNeue-Thin.otf') format('opentype');
+    src: url('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FHelveticaNeue-Thin.otf?alt=media&token=5862610d-dc9c-4954-92de-0f11077512f9') format('opentype');
 }
 @font-face {
     font-family: 'SoinSanNeueMedium';
-    src: url('../../assets/fonts/SoinSansNeue-Medium.otf') format('opentype');
+    src: url('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FStawix%20-%20SoinSansNeue-Medium_0.otf?alt=media&token=42ca41b4-1ff1-4dc7-8e64-4dd0d2e0f89e') format('opentype');
 }
 @font-face {
     font-family: 'SoinSanNeueRoman';
-    src: url('../../assets/fonts/SoinSansNeue-Roman.otf') format('opentype');
+    src: url('https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/fonts%2FStawix%20-%20SoinSansNeue-Roman_0.otf?alt=media&token=6d947292-4114-4485-9cdb-1f75af27a080') format('opentype');
 }
 
 html, body {
@@ -40,4 +40,68 @@ canvas {
     top: 0;
     left: 0;
     z-index: -1;
+}
+.app {
+    .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: $white;
+        
+        &.show {
+            animation: showPageLoader .2s ease-in-out;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            z-index: -2;
+        }
+        &.hide {
+            opacity: 1;
+            animation: hidePageLoader .2s ease-in-out;
+            animation-fill-mode: forwards;
+            z-index: 100;
+        }
+        &.first-time {
+            animation-duration: .4s;
+            
+            &::before {
+                content: '</Loading>';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                color: $dark_gray;
+                opacity: 0;
+                font-size: 7rem;
+                animation: write 2.75s alternate ease-in-out;
+                @include transform(translate(-55%, -50%));
+            }
+        }
+    }
+}
+@keyframes write {
+    0% { opacity: 1; content: ''; }
+    8% { opacity: 1; content: '<'; }
+    18% { opacity: 1; content: '</'; }
+    30% { opacity: 1; content: '</L'; }
+    38% { opacity: 1; content: '</Lo'; }
+    50% { opacity: 1; content: '</Loa'; }
+    58% { opacity: 1; content: '</Load'; }
+    70% { opacity: 1; content: '</Loadi'; }
+    78% { opacity: 1; content: '</Loadin'; }
+    85% { opacity: 1; content: '</Loading'; }
+    92% { opacity: 1; content: '</Loading>'; }
+    100% { opacity: 0; content: '</Loading>'; }
+}
+@keyframes showPageLoader {
+    to {
+        opacity: 1;
+        z-index: 100;
+    }
+}
+@keyframes hidePageLoader {
+    to {
+        opacity: 0;
+        z-index: -2;
+    }
 }

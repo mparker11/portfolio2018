@@ -7,9 +7,9 @@ import Layout from '../../components/Layout';
 class Freelance extends Component {
     render() {
         return (
-            <Layout>
+            <div>
                 Freelance page
-            </Layout>
+            </div>
         );
     }
 }

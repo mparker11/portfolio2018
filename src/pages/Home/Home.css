@@ -94,12 +94,12 @@
           right: 0;
           top: 0; }
         .home-page .home-link.freelance-link .inner-link p {
-          right: 20%;
-          top: 80px; }
+          right: 19%;
+          top: 85px; }
       .home-page .home-link.freelance-link:hover .inner-link img {
-        width: 35%; }
+        width: 30%; }
       .home-page .home-link.freelance-link:hover .inner-link p {
-        right: 33%;
+        right: 28%;
         top: 130px; }
   .home-page .personal-info {
     position: absolute;

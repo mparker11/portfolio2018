@@ -1,6 +1,7 @@
 $dark_gray: #222;
 $light_gray: #cfcfcf;
 $link_blue: #3f59ff;
+$white: #fff;
 
 @mixin transform($transforms) {
     -moz-transform: $transforms;

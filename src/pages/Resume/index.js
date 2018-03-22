@@ -7,9 +7,7 @@ import Layout from '../../components/Layout';
 class Resume extends Component {
     render() {
         return (
-            <Layout>
-                Resume page
-            </Layout>
+            <div>Resume page</div>
         );
     }
 }

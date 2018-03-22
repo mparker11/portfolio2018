@@ -6,25 +6,24 @@
     "@curi/core": "^1.0.0-beta.27",
     "@curi/react": "^1.0.0-beta.20",
     "@hickory/browser": "^1.0.0-beta.6",
-    "@hickory/in-memory": "^1.0.0-beta.4",
-    "express": "^4.6.13",
     "firebase": "^4.11.0",
+    "lodash": "^4.17.5",
     "node-sass-chokidar": "^1.1.2",
     "npm-run-all": "^4.1.2",
     "pixi.js": "^4.7.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-app-tools": "^2.0.0"
+    "react-scripts": "^1.1.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-app start",
+    "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-app build",
+    "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "test": "react-app test --env=jsdom",
-    "eject": "react-app eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "development": [
