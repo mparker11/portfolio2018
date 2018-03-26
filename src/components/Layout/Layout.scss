@@ -99,7 +99,7 @@ canvas {
                 color: $link_blue;
             }
         }
-        a:not(.contact-link) {
+        a:not(.contact-link):not(.home-link) {
             font-style: italic;
             color: darken(#c2e59c, 30%);
             text-decoration: none;

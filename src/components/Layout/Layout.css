@@ -83,7 +83,7 @@ canvas {
       text-decoration: none; }
       .app .page .contact-link:hover {
         color: #3f59ff; }
-    .app .page a:not(.contact-link) {
+    .app .page a:not(.contact-link):not(.home-link) {
       font-style: italic;
       color: #77b830;
       text-decoration: none; }
