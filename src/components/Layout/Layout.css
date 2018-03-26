@@ -24,8 +24,7 @@
 
 html, body {
   margin: 0;
-  padding: 0;
-  overflow: hidden; }
+  padding: 0; }
   html *, body * {
     font-family: 'SoinSanNeueRoman';
     color: #222; }
@@ -36,25 +35,30 @@ canvas {
   left: 0;
   z-index: -1; }
 
-.app .loader {
-  position: fixed;
-  top: 0;
-  left: 0;
+.app {
   width: 100vw;
   height: 100vh;
-  background-color: #fff; }
-  .app .loader.show {
-    animation: showPageLoader .2s ease-in-out;
+  overflow: hidden; }
+  .app .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    animation-duration: .3s;
     animation-fill-mode: forwards;
-    opacity: 0;
-    z-index: -2; }
-  .app .loader.hide {
-    opacity: 1;
-    animation: hidePageLoader .2s ease-in-out;
-    animation-fill-mode: forwards;
-    z-index: 100; }
-  .app .loader.first-time {
-    animation-duration: .4s; }
+    animation-timing-function: ease-in-out; }
+    .app .loader.show {
+      z-index: 100; }
+      .app .loader.show:not(.first-time) {
+        animation-name: showPageLoader;
+        opacity: 0;
+        z-index: -2; }
+    .app .loader.hide {
+      animation-name: hidePageLoader;
+      opacity: 1;
+      z-index: 100; }
     .app .loader.first-time::before {
       content: '</Loading>';
       position: absolute;
@@ -69,6 +73,16 @@ canvas {
       -ms-transform: translate(-55%, -50%);
       -webkit-transform: translate(-55%, -50%);
       transform: translate(-55%, -50%); }
+  .app .page {
+    height: 100%; }
+    .app .page:not(.solid-bg) {
+      padding-left: 75px;
+      padding-right: 75px;
+      background: linear-gradient(#dfe9f3, #fff); }
+    .app .page .contact-link {
+      text-decoration: none; }
+      .app .page .contact-link:hover {
+        color: #3f59ff; }
 
 @keyframes write {
   0% {

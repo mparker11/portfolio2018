@@ -1,0 +1,30 @@
+.internal-link-component {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: -220px;
+  left: -120px;
+  box-shadow: -5px -5px 26px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-transition: transform 0.3s ease;
+  -moz-transition: transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  -ms-transition: transform 0.3s ease;
+  transition: transform 0.3s ease; }
+  .internal-link-component:hover {
+    -moz-transform: scale(1.1) translateX(2%);
+    -o-transform: scale(1.1) translateX(2%);
+    -ms-transform: scale(1.1) translateX(2%);
+    -webkit-transform: scale(1.1) translateX(2%);
+    transform: scale(1.1) translateX(2%); }
+  .internal-link-component .inner-container {
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+    width: 50%;
+    display: flex;
+    align-items: center; }
+    .internal-link-component .inner-container img {
+      width: 65px;
+      margin-right: 10px; }

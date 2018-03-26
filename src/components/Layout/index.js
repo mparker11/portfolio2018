@@ -16,7 +16,10 @@ class Layout extends Component {
 
     componentDidMount() {
         setTimeout(() => this.setState({ children: this.props.children }), 0);
-        setTimeout(() => this.setState({ loading: false }), 3500);
+        setTimeout(() => this.setState({ loading: false }, () => {
+            //after the loading is done, tweak style to prepare for next page transition
+            document.querySelector('.loader').classList.remove('first-time');
+        }), 3500);
     }
     
     componentWillReceiveProps(nextProps) {
@@ -24,14 +27,13 @@ class Layout extends Component {
         //simulate a fade transition by using the loading div we have
         //but making it blank and transitioning faster
         if (!__isEqual(this.props.children, nextProps.children)) {
-            this.setState({ 
-                loading: true, 
-                children: null 
-            }, () => {
-                setTimeout(() => this.setState({ 
-                    loading: false, 
-                    children: this.props.children 
-                }), 500);
+            this.setState({ loading: true }, () => {
+                setTimeout(() => this.setState({ children: null }, () => {
+                    setTimeout(() => this.setState({ 
+                        loading: false, 
+                        children: this.props.children 
+                    }), 300);
+                }), 300);
             });
         }
     }

@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 import './NotFound.css';
 
-import Layout from '../../components/Layout';
-
 class NotFound extends Component {
     render() {
         return (
-            <Layout>
+            <div className="not-found-page page">
                 NotFound page
-            </Layout>
+            </div>
         );
     }
 }

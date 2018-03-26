@@ -78,7 +78,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="home-page">
+            <div className="home-page page solid-bg">
                 <Link className="resume-link home-link" to="Resume">
                     <div className="inner-link">
                         <img alt="" className="default" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FResume%20Icon.svg?alt=media&token=b1c37ff2-249d-4dd0-9de0-59081ea8dfbd" />
@@ -86,11 +86,11 @@ class Home extends Component {
                         <p>Resumé</p>
                     </div>
                 </Link>
-                <Link className="freelance-link home-link" to="Freelance">
+                <Link className="my-work-link home-link" to="MyWork">
                     <div className="inner-link">
                         <img alt="" className="default" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FDeveloper%20Icon.svg?alt=media&token=949477c0-6cfe-4a5a-8c19-4f3d34faa313" />
                         <img alt="" className="gradient" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FGradient-Development%20Icon.svg?alt=media&token=324d3fd2-ab1b-45ea-a10a-336cce9660d7" />
-                        <p>Freelance</p>
+                        <p>My Work</p>
                     </div>
                 </Link>
                 <div className="intro">
@@ -100,9 +100,9 @@ class Home extends Component {
                 <div className="personal-info">
                     <div className="inner-info">
                         <div className="contact">
-                            <a href="mailto:martavis@auraticdevelopment.com">martavis@auraticdevelopment.com</a>
+                            <a className="contact-link" href="mailto:martavis@auraticdevelopment.com">martavis@auraticdevelopment.com</a>
                             <br />
-                            <a href="tel:6572260521">657.226.0521</a>
+                            <a className="contact-link" href="tel:6572260521">657.226.0521</a>
                         </div>
                         <img alt="" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FContactCard%20icon.svg?alt=media&token=2adba449-b435-480d-b759-9c9c476d675c" />
                     </div>

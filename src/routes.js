@@ -1,5 +1,5 @@
 import Home from './pages/Home';
-import Freelance from './pages/Freelance';
+import MyWork from './pages/MyWork';
 import Resume from './pages/Resume';
 import Mobile from './pages/Mobile';
 import NotFound from './pages/NotFound';
@@ -15,11 +15,11 @@ const routes = [
         } 
     },
     { 
-        name: 'Freelance', 
-        path: 'freelance',
+        name: 'MyWork', 
+        path: 'my-work',
         match: {
             response: ({ set }) => {
-                set.body(Freelance);
+                set.body(MyWork);
             }
         } 
     },

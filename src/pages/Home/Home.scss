@@ -107,7 +107,7 @@
                 }
             }
         }
-        &.freelance-link {
+        &.my-work-link {
             right: 0;
             top: 0;
 
@@ -161,15 +161,10 @@
                 text-align: right;
                 margin-right: 20px;
                 margin-bottom: 25px;
-    
-                a {
+
+                .contact-link {
                     font-size: 1.25vw;
-                    text-decoration: none;
                     line-height: 1.25;
-                    
-                    &:hover {
-                        color: $link_blue;
-                    }
                 }
             }
         }

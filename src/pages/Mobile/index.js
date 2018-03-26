@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 import './Mobile.css';
 
-import Layout from '../../components/Layout';
-
 class Mobile extends Component {
     render() {
         return (
-            <Layout>
+            <div className="mobile-page page">
                 Mobile page
-            </Layout>
+            </div>
         );
     }
 }

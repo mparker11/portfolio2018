@@ -83,22 +83,22 @@
       .home-page .home-link.resume-link:hover .inner-link p {
         left: 47%;
         bottom: 130px; }
-    .home-page .home-link.freelance-link {
+    .home-page .home-link.my-work-link {
       right: 0;
       top: 0; }
-      .home-page .home-link.freelance-link .inner-link {
+      .home-page .home-link.my-work-link .inner-link {
         right: -18px;
         top: -18px; }
-        .home-page .home-link.freelance-link .inner-link img {
+        .home-page .home-link.my-work-link .inner-link img {
           width: 20%;
           right: 0;
           top: 0; }
-        .home-page .home-link.freelance-link .inner-link p {
+        .home-page .home-link.my-work-link .inner-link p {
           right: 19%;
           top: 85px; }
-      .home-page .home-link.freelance-link:hover .inner-link img {
+      .home-page .home-link.my-work-link:hover .inner-link img {
         width: 30%; }
-      .home-page .home-link.freelance-link:hover .inner-link p {
+      .home-page .home-link.my-work-link:hover .inner-link p {
         right: 28%;
         top: 130px; }
   .home-page .personal-info {
@@ -121,9 +121,6 @@
         text-align: right;
         margin-right: 20px;
         margin-bottom: 25px; }
-        .home-page .personal-info .inner-info .contact a {
+        .home-page .personal-info .inner-info .contact .contact-link {
           font-size: 1.25vw;
-          text-decoration: none;
           line-height: 1.25; }
-          .home-page .personal-info .inner-info .contact a:hover {
-            color: #3f59ff; }

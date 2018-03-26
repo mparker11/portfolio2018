@@ -1,0 +1,30 @@
+@import '../../assets/css/variables.scss';
+
+.internal-link-component {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: -220px;
+    left: -120px;
+    box-shadow: -5px -5px 26px;
+    background-color: $white;
+    border-radius: 50%;
+    @include transition(transform .3s ease);
+
+    &:hover {
+        @include transform(scale(1.1) translateX(2%));
+    }
+    .inner-container {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        width: 50%;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 65px;
+            margin-right: 10px;
+        }
+    }
+}
