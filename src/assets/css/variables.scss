@@ -3,6 +3,8 @@ $light_gray: #cfcfcf;
 $link_blue: #3f59ff;
 $white: #fff;
 
+$title_spacing: 4px;
+
 @mixin transform($transforms) {
     -moz-transform: $transforms;
     -o-transform: $transforms;

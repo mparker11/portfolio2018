@@ -99,6 +99,11 @@ canvas {
                 color: $link_blue;
             }
         }
+        a:not(.contact-link) {
+            font-style: italic;
+            color: darken(#c2e59c, 30%);
+            text-decoration: none;
+        }
     }
 }
 @keyframes write {

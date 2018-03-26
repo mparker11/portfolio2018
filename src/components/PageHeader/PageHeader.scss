@@ -1,0 +1,10 @@
+@import '../../assets/css/variables.scss';
+
+.page-header-component {
+    h1 {
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: $title_spacing;
+        text-transform: uppercase;
+    }
+}
