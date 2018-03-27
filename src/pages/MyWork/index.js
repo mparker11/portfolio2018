@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from '@curi/react';
 
 import './MyWork.css';
 
@@ -38,12 +39,14 @@ class MyWork extends Component {
                                 className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' }`} 
                                 onClick={ () => this.setState({ selectedProject: i }) }
                             >
-                                <div className="project-image" style={{ backgroundImage: `url(${ project.image })` }}>
-                                    <div className={`project-info ${ this.state.selectedProject === i ? 'full' : ''}`}>
-                                        <h2 className="title">{ project.title }</h2>
-                                        <p className="year">{ project.year }</p>
+                                <Link to="Project" params={{ title: project.slug }}>
+                                    <div className="project-image" style={{ backgroundImage: `url(${ project.image })` }}>
+                                        <div className={`project-info ${ this.state.selectedProject === i ? 'full' : ''}`}>
+                                            <h2 className="title">{ project.title }</h2>
+                                            <p className="year">{ project.year }</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         )
                     })

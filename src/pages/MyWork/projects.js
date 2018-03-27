@@ -1,6 +1,7 @@
 const projects = [
     {
         title: 'Analog Devices',
+        slug: 'analog-devices',
         year: '2018',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fad_logo.jpg?alt=media&token=e9514dae-2375-4ae3-b55b-120299c7f42c',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FAD_screen_grab.mp4?alt=media&token=8938ddfa-db25-489b-9130-5fde98d89398',
@@ -9,6 +10,7 @@ const projects = [
     },
     {
         title: 'Collyde',
+        slug: 'collyde',
         year: '2018',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fcollyde_logo.jpg?alt=media&token=530ea27b-ee0f-455b-8b26-c5ff25da7053',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FCollyde.mp4?alt=media&token=5e113a59-263b-4e84-989e-cca1f23fe444',
@@ -17,6 +19,7 @@ const projects = [
     },
     {
         title: 'codeSpark Academy',
+        slug: 'codespark-academy',
         year: '2017',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fcodespark_logo.jpg?alt=media&token=96af42df-5d12-4786-ab0f-8acf06393035',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FcodeSpark.mp4?alt=media&token=6b19e97b-305e-4a71-a0f7-9ecb29bbfde6',
@@ -26,6 +29,7 @@ const projects = [
     },
     {
         title: 'Bus 21',
+        slug: 'bus-21',
         year: '2017',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fbus21_logo.jpg?alt=media&token=cd6d6971-72f3-4d9c-94bd-346fb9af389f',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FBus_21.mp4?alt=media&token=ec1db3f1-1bd6-4155-8e03-717a2d8de869',
@@ -34,6 +38,7 @@ const projects = [
     },
     {
         title: 'Choose Your Hit',
+        slug: 'choose-your-hit',
         year: '2016',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fchoose_your_hit.jpg?alt=media&token=bf3eea4a-6f3e-486d-8043-ee4a1be1378c',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FChoose_Your_Hit.mp4?alt=media&token=336552f8-dc0d-4789-ade0-fa2c6e383cf8',
@@ -42,6 +47,7 @@ const projects = [
     },
     {
         title: 'The Global Human',
+        slug: 'the-global-human',
         year: '2016',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fthe_global_human_logo.jpg?alt=media&token=483f8a1c-1673-43da-aad8-31557fda555d',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FThe_Global_Human.mp4?alt=media&token=3fe8046f-a492-40c9-8fb0-228c87593435',
@@ -51,6 +57,7 @@ const projects = [
     },
     {
         title: 'Portfolio (2015)',
+        slug: 'portfolio-2015',
         year: '2015',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fportfolio_v6_logo.jpg?alt=media&token=23234c35-b8c9-4ce9-becd-98211ab02e27',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2Fportfolio_v6.mp4?alt=media&token=c3f187bc-b65e-4d03-bc5c-40670c0888f6',
@@ -59,6 +66,7 @@ const projects = [
     },
     {
         title: 'Inhance Bejeweled',
+        slug: 'inhance-bejeweled',
         year: '2014',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Finhance_logo.jpg?alt=media&token=9342a8d7-30ea-48b9-8add-cba9eb27e882',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FInhance_Bejeweled.mp4?alt=media&token=54d0472e-0636-435b-a39d-21ba98996810',
@@ -67,6 +75,7 @@ const projects = [
     },
     {
         title: 'The Media Dept',
+        slug: 'the-media-dept',
         year: '2014',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fthe_media_dept_logo.jpg?alt=media&token=5dca00d3-af86-474a-b123-70e26e829fe1',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FThe_Media_Dept.mp4?alt=media&token=f612ed4a-9051-4baf-a57c-c11ed2b46073',

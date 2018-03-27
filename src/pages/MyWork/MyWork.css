@@ -7,52 +7,66 @@
 .my-work-page .work-container {
   width: 75%;
   min-width: 1024px;
-  height: calc(100vh - 255px);
-  margin: 50px auto 0;
-  overflow-y: auto;
-  overflow-x: hidden; }
+  margin: 50px auto 0; }
   .my-work-page .work-container .project-wrapper {
     position: relative;
     width: 100%;
-    height: 400px;
-    margin-bottom: 70px; }
-    .my-work-page .work-container .project-wrapper .project-image {
-      position: absolute;
-      top: 0;
-      width: 65%;
-      max-width: 750px;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3);
-      border-radius: 6px; }
-      .my-work-page .work-container .project-wrapper .project-image .project-info {
-        position: absolute;
-        top: 50%;
-        width: 60%;
-        padding: 25px;
-        background-color: #fff;
-        box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3);
-        border-radius: 2px;
-        -moz-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%); }
-        .my-work-page .work-container .project-wrapper .project-image .project-info .title {
-          margin: 0;
-          font-size: 2.5rem;
-          font-weight: 400; }
-        .my-work-page .work-container .project-wrapper .project-image .project-info .year {
-          margin-top: 10px;
-          margin-bottom: 0;
-          font-size: 1rem; }
+    margin-top: 100px;
+    margin-bottom: 100px; }
+    .my-work-page .work-container .project-wrapper a {
+      text-decoration: none; }
+      .my-work-page .work-container .project-wrapper a .project-image {
+        position: relative;
+        width: 38vw;
+        height: calc(38vw * 9 / 16);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px; }
+        .my-work-page .work-container .project-wrapper a .project-image .project-info {
+          position: relative;
+          top: 0;
+          width: 60%;
+          height: 75px;
+          padding: 25px;
+          background-color: #fff;
+          border-radius: 2px;
+          animation-name: infoShrink;
+          animation-fill-mode: forwards;
+          animation-duration: .3s; }
+          .my-work-page .work-container .project-wrapper a .project-image .project-info .title {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 400; }
+          .my-work-page .work-container .project-wrapper a .project-image .project-info .year {
+            margin-top: 10px;
+            margin-bottom: 0;
+            font-size: 1rem; }
+      .my-work-page .work-container .project-wrapper a:hover .project-info {
+        will-change: height;
+        height: calc(100% - 50px);
+        animation-name: infoGrow; }
     .my-work-page .work-container .project-wrapper.left-side .project-image {
-      left: 0; }
+      box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3); }
       .my-work-page .work-container .project-wrapper.left-side .project-image .project-info {
-        left: 80%; }
+        left: 100%;
+        box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3); }
     .my-work-page .work-container .project-wrapper.right-side .project-image {
-      right: 0; }
+      left: 44%;
+      box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3); }
       .my-work-page .work-container .project-wrapper.right-side .project-image .project-info {
-        right: 80%; }
+        right: 68%;
+        box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
+        text-align: right; }
+
+@keyframes infoGrow {
+  0% {
+    height: 75px; }
+  100% {
+    height: calc(100% - 50px); } }
+
+@keyframes infoShrink {
+  0% {
+    height: calc(100% - 50px); }
+  100% {
+    height: 75px; } }

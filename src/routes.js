@@ -2,7 +2,6 @@ import Home from './pages/Home';
 import MyWork from './pages/MyWork';
 import Resume from './pages/Resume';
 import Mobile from './pages/Mobile';
-import NotFound from './pages/NotFound';
 
 const routes = [
     { 
@@ -17,11 +16,22 @@ const routes = [
     { 
         name: 'MyWork', 
         path: 'my-work',
+        children: [
+            { 
+                name: 'Project', 
+                path: ':title',
+                match: {
+                    response: ({ set }) => {
+                        set.body(MyWork);
+                    }
+                }
+            }
+        ],
         match: {
             response: ({ set }) => {
                 set.body(MyWork);
             }
-        } 
+        }
     },
     { 
         name: 'Resume', 
@@ -46,7 +56,7 @@ const routes = [
         path: '(.*)',
         match: {
             response: ({ set }) => {
-                set.body(NotFound);
+                set.redirect({ name: 'Home' });
             }
         } 
     }

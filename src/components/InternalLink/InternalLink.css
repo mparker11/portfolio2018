@@ -20,7 +20,7 @@
     transform: scale(1.1) translateX(2%); }
   .internal-link-component .inner-container {
     position: absolute;
-    bottom: 52px;
+    bottom: 56px;
     right: 23px;
     width: 50%;
     display: flex;
