@@ -1,4 +1,4 @@
-.my-work-page .description {
+.my-work-page .page-description {
   width: 80%;
   margin: 0 auto;
   text-align: center;
@@ -26,26 +26,49 @@
         .my-work-page .work-container .project-wrapper a .project-image .project-info {
           position: relative;
           top: 0;
-          width: 60%;
+          width: 65%;
           height: 75px;
           padding: 25px;
           background-color: #fff;
           border-radius: 2px;
           animation-name: infoShrink;
           animation-fill-mode: forwards;
-          animation-duration: .3s; }
-          .my-work-page .work-container .project-wrapper a .project-image .project-info .title {
+          animation-duration: .3s;
+          overflow: hidden; }
+          .my-work-page .work-container .project-wrapper a .project-image .project-info .project-title {
             margin: 0;
             font-size: 2.5rem;
             font-weight: 400; }
-          .my-work-page .work-container .project-wrapper a .project-image .project-info .year {
+          .my-work-page .work-container .project-wrapper a .project-image .project-info .project-year {
             margin-top: 10px;
             margin-bottom: 0;
             font-size: 1rem; }
+          .my-work-page .work-container .project-wrapper a .project-image .project-info .project-description {
+            margin-top: 25px;
+            text-align: justify;
+            font-size: 1.125rem;
+            line-height: 1.25; }
+          @media screen and (max-width: 1440px) {
+            .my-work-page .work-container .project-wrapper a .project-image .project-info .project-title {
+              font-size: 1.5rem; } }
+        .my-work-page .work-container .project-wrapper a .project-image .click-instructions {
+          position: absolute;
+          right: 25px;
+          bottom: 10px;
+          opacity: 0;
+          font-weight: 700; }
       .my-work-page .work-container .project-wrapper a:hover .project-info {
         will-change: height;
         height: calc(100% - 50px);
         animation-name: infoGrow; }
+      .my-work-page .work-container .project-wrapper a:hover .click-instructions {
+        will-change: opacity;
+        opacity: 1;
+        -webkit-transition: opacity 0.3s ease 0.3s;
+        -moz-transition: opacity 0.3s ease 0.3s;
+        -o-transition: opacity 0.3s ease 0.3s;
+        -ms-transition: opacity 0.3s ease 0.3s;
+        transition: opacity 0.3s ease 0.3s; }
     .my-work-page .work-container .project-wrapper.left-side .project-image {
       box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3); }
       .my-work-page .work-container .project-wrapper.left-side .project-image .project-info {
@@ -55,7 +78,7 @@
       left: 44%;
       box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3); }
       .my-work-page .work-container .project-wrapper.right-side .project-image .project-info {
-        right: 68%;
+        left: calc(-65% - 50px);
         box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
         text-align: right; }
 

@@ -1,7 +1,7 @@
 @import '../../assets/css/variables.scss';
 
 .my-work-page {
-    .description {
+    .page-description {
         width: 80%;
         margin: 0 auto;
         text-align: center;
@@ -33,7 +33,7 @@
                     .project-info {
                         position: relative;
                         top: 0;
-                        width: 60%;
+                        width: 65%;
                         height: 75px;
                         padding: 25px;
                         background-color: $white;
@@ -41,17 +41,36 @@
                         animation-name: infoShrink;
                         animation-fill-mode: forwards;
                         animation-duration: .3s;
+                        overflow: hidden;
                         
-                        .title {
+                        .project-title {
                             margin: 0;
                             font-size: 2.5rem;
                             font-weight: 400;
                         }
-                        .year {
+                        .project-year {
                             margin-top: 10px;
                             margin-bottom: 0;
                             font-size: 1rem;
                         }
+                        .project-description {
+                            margin-top: 25px;
+                            text-align: justify;
+                            font-size: 1.125rem;
+                            line-height: 1.25;
+                        }
+                        @media screen and (max-width: 1440px) {
+                            .project-title {
+                                font-size: 1.5rem;
+                            }
+                        }
+                    }
+                    .click-instructions {
+                        position: absolute;
+                        right: 25px;
+                        bottom: 10px;
+                        opacity: 0;
+                        font-weight: 700;
                     }
                 }
                 &:hover {
@@ -59,6 +78,11 @@
                         will-change: height;
                         height: calc(100% - 50px);
                         animation-name: infoGrow;
+                    }
+                    .click-instructions {
+                        will-change: opacity;
+                        opacity: 1;
+                        @include transition(opacity .3s ease .3s);
                     }
                 }
             }
@@ -78,7 +102,7 @@
                     box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
                     
                     .project-info {
-                        right: 68%;
+                        left: calc(-65% - 50px);
                         box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
                         text-align: right;
                     }

@@ -23,9 +23,9 @@ class MyWork extends Component {
                 <EmailHeader />
                 <InternalLink page="Resume" imageSrc="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FGradient-Resume%20Icon.svg?alt=media&token=72d3d88e-a5ba-47cb-87aa-58b3b6a66b33" />
                 <PageHeader title="My Work Showcase" />
-                <p className="description">
+                <p className="page-description">
                     From creating a featured client app for the 
-                    &nbsp;<a className="link-in-text" href="https://www.ces.tech/" target="_blank">Consumer Electronics Show (CES)</a>&nbsp;
+                    &nbsp;<a className="link-in-text" href="https://www.ces.tech/" target="_blank" rel="noopener noreferrer">Consumer Electronics Show (CES)</a>&nbsp;
                     to building websites for small business owners, the work you see below has been proudly created with love. 
                     I strive to achieve the best quality, rather than working for a quick buck, and 
                     look forward to working with those who are a stickler for the same. If you would like to chat 
@@ -42,8 +42,10 @@ class MyWork extends Component {
                                 <Link to="Project" params={{ title: project.slug }}>
                                     <div className="project-image" style={{ backgroundImage: `url(${ project.image })` }}>
                                         <div className={`project-info ${ this.state.selectedProject === i ? 'full' : ''}`}>
-                                            <h2 className="title">{ project.title }</h2>
-                                            <p className="year">{ project.year }</p>
+                                            <h2 className="project-title">{ project.title }</h2>
+                                            <p className="project-year">{ project.year }</p>
+                                            <p className="project-description">{ project.description }</p>
+                                            <p className="click-instructions">Click to watch demo &rarr;</p>
                                         </div>
                                     </div>
                                 </Link>
