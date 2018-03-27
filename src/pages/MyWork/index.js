@@ -15,7 +15,7 @@ class MyWork extends Component {
                 <PageHeader title="My Work Showcase" />
                 <p className="description">
                     From creating a featured client app for the 
-                    &nbsp;<a href="https://www.ces.tech/" target="_blank">Consumer Electronics Show (CES)</a>&nbsp;
+                    &nbsp;<a className="link-in-text" href="https://www.ces.tech/" target="_blank">Consumer Electronics Show (CES)</a>&nbsp;
                     to building websites for small business owners, the work you see below has been proudly created with love. 
                     I strive to achieve the best quality, rather than working for a quick buck, and 
                     look forward to working with those who are a stickler for the same. If you would like to chat 
