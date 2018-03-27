@@ -27,4 +27,6 @@
     align-items: center; }
     .internal-link-component .inner-container img {
       width: 65px;
-      margin-right: 10px; }
+      margin-right: 7px; }
+    .internal-link-component .inner-container span {
+      margin-top: 8px; }

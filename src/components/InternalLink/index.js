@@ -19,7 +19,7 @@ class InternalLink extends Component {
                 <div className="internal-link-component">
                     <div className="inner-container">
                         <img alt="" src={ this.props.imageSrc } />
-                        { this.state.pageTitle }
+                        <span>{ this.state.pageTitle }</span>
                     </div>
                 </div>
             </Link>

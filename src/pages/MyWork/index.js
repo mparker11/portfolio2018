@@ -5,8 +5,17 @@ import './MyWork.css';
 import EmailHeader from '../../components/EmailHeader';
 import PageHeader from '../../components/PageHeader';
 import InternalLink from '../../components/InternalLink';
+import projects from './projects';
 
 class MyWork extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedProject: null
+        };
+    }
+
     render() {
         return (
             <div className="my-work-page page">
@@ -21,6 +30,25 @@ class MyWork extends Component {
                     look forward to working with those who are a stickler for the same. If you would like to chat 
                     with me about an opportunity, please feel free to reach me using the contact info above.
                 </p>
+                <div className="work-container">
+                {
+                    projects.map((project, i) => {
+                        return (
+                            <div key={ i } 
+                                className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' }`} 
+                                onClick={ () => this.setState({ selectedProject: i }) }
+                            >
+                                <div className="project-image" style={{ backgroundImage: `url(${ project.image })` }}>
+                                    <div className={`project-info ${ this.state.selectedProject === i ? 'full' : ''}`}>
+                                        <h2 className="title">{ project.title }</h2>
+                                        <p className="year">{ project.year }</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+                </div>
             </div>
         );
     }

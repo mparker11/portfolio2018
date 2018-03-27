@@ -7,4 +7,72 @@
         text-align: center;
         line-height: 1.25;
     }
+    .work-container {
+        width: 75%;
+        min-width: 1024px;
+        height: calc(100vh - 255px);
+        margin: 50px auto 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        .project-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 70px;
+
+            .project-image {
+                position: absolute;
+                top: 0;
+                width: 65%;
+                max-width: 750px;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3);
+                border-radius: 6px;
+                
+                .project-info {
+                    position: absolute;
+                    top: 50%;
+                    width: 60%;
+                    padding: 25px;
+                    background-color: $white;
+                    box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3);
+                    border-radius: 2px;
+                    @include transform(translateY(-50%));
+                    
+                    .title {
+                        margin: 0;
+                        font-size: 2.5rem;
+                        font-weight: 400;
+                    }
+                    .year {
+                        margin-top: 10px;
+                        margin-bottom: 0;
+                        font-size: 1rem;
+                    }
+                }
+            }
+            &.left-side {
+                .project-image {
+                    left: 0;
+
+                    .project-info {
+                        left: 80%;
+                    }
+                }
+            }
+            &.right-side {
+                .project-image {
+                    right: 0;
+
+                    .project-info {
+                        right: 80%;
+                    }
+                }
+            }
+        }
+    }
 }
