@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from '@curi/react';
 
 import './MyWork.css';
 
@@ -13,8 +12,49 @@ class MyWork extends Component {
         super(props);
 
         this.state = {
-            selectedProject: null
+            selectedProject: ''
         };
+    }
+
+    componentDidMount() {
+        import('react-scroll').then((Scroll) => {
+            this.scroll = Scroll.animateScroll;
+        });
+    }
+
+    componentWillUpdate() {
+        this.unsetVideoScene();
+    }
+
+    componentDidUpdate() {
+        this.setVideoScene();
+    }
+
+    setVideoScene() {
+        if (this.state.selectedProject !== '') {
+            const video = document.querySelector(`#${ this.state.selectedProject }`);
+            const offset = 125;
+            const view = video.offsetTop - offset;
+            
+            this.scroll.scrollTo(view, {
+                duration: 300,
+                smooth: 'easeInOutQuad'
+            });
+
+            document.querySelector(`html`).classList.add('video-scene');
+            document.querySelector(`.page-description`).classList.add('video-scene');
+            video.classList.add('video-scene');
+        }
+    }
+
+    unsetVideoScene() {
+        if (this.state.selectedProject !== '') {
+            const video = document.querySelector(`#${ this.state.selectedProject }`);
+    
+            document.querySelector(`html`).classList.remove('video-scene');
+            document.querySelector(`.page-description`).classList.remove('video-scene');
+            video.classList.remove('video-scene');
+        }        
     }
 
     render() {
@@ -36,23 +76,25 @@ class MyWork extends Component {
                     projects.map((project, i) => {
                         return (
                             <div key={ i } 
-                                className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' }`} 
-                                onClick={ () => this.setState({ selectedProject: i }) }
+                                id={ project.slug }
+                                className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' } ${ this.state.selectedProject !== '' && this.state.selectedProject !== project.slug ? 'no-show' : '' }`} 
+                                onClick={ () => this.setState({ selectedProject: project.slug }) }
                             >
-                                <Link to="Project" params={{ title: project.slug }}>
-                                    <div className="project-image" style={{ backgroundImage: `url(${ project.image })` }}>
-                                        <div className={`project-info ${ this.state.selectedProject === i ? 'full' : ''}`}>
-                                            <h2 className="project-title">{ project.title }</h2>
-                                            <p className="project-year">{ project.year }</p>
-                                            <p className="project-description">{ project.description }</p>
-                                            <p className="click-instructions">Click to watch demo &rarr;</p>
-                                        </div>
+                                <div className={ `project-image ${ this.state.selectedProject === project.slug ? 'watch-video' : '' }`} 
+                                    style={{ backgroundImage: `url(${ project.image })` }}
+                                >
+                                    <div className="project-info">
+                                        <h2 className="project-title">{ project.title }</h2>
+                                        <p className="project-year">{ project.year }</p>
+                                        <p className="project-description">{ project.description }</p>
+                                        <p className="click-instructions">Click to watch demo &rarr;</p>
                                     </div>
-                                </Link>
+                                </div>
                             </div>
                         )
                     })
                 }
+                    <div className="video-close" onClick={ () => this.setState({ selectedProject: '' }) }>&times;</div>
                 </div>
             </div>
         );
