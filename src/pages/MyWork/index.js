@@ -57,6 +57,18 @@ class MyWork extends Component {
         }        
     }
 
+    selectProject(slug) {
+        //only allowing one video to be selected at a time so it's
+        //safe to make selected explicit
+
+        //AND IF VIDEO IS NOT PLAYING
+        if (this.state.selectedProject === '') {
+            this.setState({ selectedProject: slug })
+        } else {
+            this.setState({ selectedProject: '' })
+        }
+    }
+
     render() {
         return (
             <div className="my-work-page page">
@@ -78,7 +90,7 @@ class MyWork extends Component {
                             <div key={ i } 
                                 id={ project.slug }
                                 className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' } ${ this.state.selectedProject !== '' && this.state.selectedProject !== project.slug ? 'no-show' : '' }`} 
-                                onClick={ () => this.setState({ selectedProject: project.slug }) }
+                                onClick={ () => this.selectProject(project.slug) }
                             >
                                 <div className={ `project-image ${ this.state.selectedProject === project.slug ? 'watch-video' : '' }`} 
                                     style={{ backgroundImage: `url(${ project.image })` }}
@@ -89,12 +101,12 @@ class MyWork extends Component {
                                         <p className="project-description">{ project.description }</p>
                                         <p className="click-instructions">Click to watch demo &rarr;</p>
                                     </div>
+                                    <div className="video-close">&times;</div>
                                 </div>
                             </div>
                         )
                     })
                 }
-                    <div className="video-close" onClick={ () => this.setState({ selectedProject: '' }) }>&times;</div>
                 </div>
             </div>
         );

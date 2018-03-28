@@ -75,6 +75,18 @@
         bottom: 10px;
         opacity: 0;
         font-weight: 700; }
+      .my-work-page .work-container .project-wrapper .project-image .video-close {
+        font-size: 6rem;
+        color: #fff;
+        position: fixed;
+        top: -75px;
+        right: -55px;
+        opacity: 0;
+        -webkit-transition: opacity 0.1s ease;
+        -moz-transition: opacity 0.1s ease;
+        -o-transition: opacity 0.1s ease;
+        -ms-transition: opacity 0.1s ease;
+        transition: opacity 0.1s ease; }
       .my-work-page .work-container .project-wrapper .project-image.watch-video {
         animation-name: growVideo; }
         .my-work-page .work-container .project-wrapper .project-image.watch-video .project-info {
@@ -85,6 +97,14 @@
           -o-transition: opacity 0.1s ease;
           -ms-transition: opacity 0.1s ease;
           transition: opacity 0.1s ease; }
+        .my-work-page .work-container .project-wrapper .project-image.watch-video .video-close {
+          opacity: 1;
+          cursor: pointer;
+          -webkit-transition: opacity 0.3s ease 0.5s;
+          -moz-transition: opacity 0.3s ease 0.5s;
+          -o-transition: opacity 0.3s ease 0.5s;
+          -ms-transition: opacity 0.3s ease 0.5s;
+          transition: opacity 0.3s ease 0.5s; }
     .my-work-page .work-container .project-wrapper:hover .project-info {
       will-change: height;
       height: calc(100% - 50px);
@@ -109,8 +129,7 @@
         left: 100%;
         box-shadow: 5px 5px 17px 0px rgba(0, 0, 0, 0.3); }
       .my-work-page .work-container .project-wrapper.left-side .project-image.watch-video {
-        will-change: left;
-        left: 40px; }
+        will-change: left; }
     .my-work-page .work-container .project-wrapper.right-side .project-image {
       left: 44%;
       box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
@@ -124,8 +143,7 @@
         box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
         text-align: right; }
       .my-work-page .work-container .project-wrapper.right-side .project-image.watch-video {
-        will-change: left;
-        left: 40px; }
+        will-change: left; }
     .my-work-page .work-container .project-wrapper.no-show {
       pointer-events: none;
       opacity: 0;
@@ -149,12 +167,24 @@
     height: calc(38vw * 9 / 16); }
   100% {
     width: 1024px;
-    height: 576px; } }
+    height: 576px;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); } }
 
 @keyframes shrinkVideo {
   0% {
     width: 1024px;
-    height: 576px; }
+    height: 576px;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); }
   100% {
     width: 38vw;
     height: calc(38vw * 9 / 16); } }

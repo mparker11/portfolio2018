@@ -39,14 +39,6 @@ html, body {
       -o-transition: background 0.3s ease;
       -ms-transition: background 0.3s ease;
       transition: background 0.3s ease; }
-      html.video-scene .page .video-close, body.video-scene .page .video-close {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-transition: opacity 0.3s ease 0.5s;
-        -moz-transition: opacity 0.3s ease 0.5s;
-        -o-transition: opacity 0.3s ease 0.5s;
-        -ms-transition: opacity 0.3s ease 0.5s;
-        transition: opacity 0.3s ease 0.5s; }
 
 canvas {
   position: fixed;
@@ -103,18 +95,6 @@ canvas {
     font-style: italic;
     color: #77b830;
     text-decoration: none; }
-  .app .page .video-close {
-    font-size: 6rem;
-    color: #fff;
-    position: fixed;
-    top: 55px;
-    right: 235px;
-    opacity: 0;
-    -webkit-transition: opacity 0.1s ease;
-    -moz-transition: opacity 0.1s ease;
-    -o-transition: opacity 0.1s ease;
-    -ms-transition: opacity 0.1s ease;
-    transition: opacity 0.1s ease; }
 
 @keyframes write {
   0% {

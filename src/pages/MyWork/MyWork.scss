@@ -84,6 +84,15 @@
                     opacity: 0;
                     font-weight: 700;
                 }
+                .video-close {
+                    font-size: 6rem;
+                    color: $white;
+                    position: fixed;
+                    top: -75px;
+                    right: -55px;
+                    opacity: 0;
+                    @include transition(opacity .1s ease);
+                }
                 &.watch-video {
                     animation-name: growVideo;
 
@@ -91,6 +100,11 @@
                         will-change: opacity;
                         opacity: 0;
                         @include transition(opacity .1s ease);
+                    }
+                    .video-close {
+                        opacity: 1;
+                        cursor: pointer;
+                        @include transition(opacity .3s ease .5s);
                     }
                 }
             }
@@ -118,7 +132,6 @@
                     }
                     &.watch-video {
                         will-change: left;
-                        left: 40px;
                     }
                 }
             }
@@ -135,7 +148,6 @@
                     }
                     &.watch-video {
                         will-change: left;
-                        left: 40px;
                     }
                 }
             }
@@ -164,12 +176,16 @@
     100% { 
         width: 1024px;
         height: 576px;
+        left: 50%;
+        @include transform(translateX(-50%));
     }
 }
 @keyframes shrinkVideo {
     0% { 
         width: 1024px;
         height: 576px;
+        left: 50%;
+        @include transform(translateX(-50%));
     }
     100% { 
         width: 38vw;

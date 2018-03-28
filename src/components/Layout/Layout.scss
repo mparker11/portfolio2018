@@ -41,12 +41,6 @@ html, body {
             background: rgba(0, 0, 0, 0.3) !important;
             will-change: opacity;
             @include transition(background .3s ease);
-
-            .video-close {
-                opacity: 1;
-                cursor: pointer;
-                @include transition(opacity .3s ease .5s);
-            }
         }
     }
 }
@@ -116,15 +110,6 @@ canvas {
             font-style: italic;
             color: darken(#c2e59c, 30%);
             text-decoration: none;
-        }
-        .video-close {
-            font-size: 6rem;
-            color: $white;
-            position: fixed;
-            top: 55px;
-            right: 235px;
-            opacity: 0;
-            @include transition(opacity .1s ease);
         }
     }
 }
