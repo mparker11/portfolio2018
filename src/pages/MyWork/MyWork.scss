@@ -84,15 +84,6 @@
                     opacity: 0;
                     font-weight: 700;
                 }
-                .video-wrapper {
-                    position: absolute;
-                    top: 0;
-                    left: -16px;
-                    width: 1056px;
-                    height: 576px;
-                    opacity: 0;
-                    @include transition(opacity .1s ease .3s);
-                }
                 .video-close {
                     font-size: 6rem;
                     color: $white;
@@ -106,11 +97,12 @@
                     animation-name: growVideo;
                     
                     .project-info {
+                        pointer-events: none;
                         will-change: opacity;
                         opacity: 0;
                         @include transition(opacity .1s ease);
                     }
-                    .video-wrapper {
+                    & + .video-wrapper {
                         opacity: 1;
                         @include transition(opacity .1s ease);
                     }
@@ -120,6 +112,16 @@
                         @include transition(opacity .3s ease .5s);
                     }
                 }
+            }
+            .video-wrapper {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 1056px;
+                height: 576px;
+                opacity: 0;
+                @include transition(opacity .1s ease .3s);
+                @include transform(translateX(-50%));
             }
             &:hover {
                 .project-info {

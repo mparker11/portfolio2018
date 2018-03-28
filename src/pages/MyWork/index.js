@@ -104,10 +104,10 @@ class MyWork extends Component {
                             <div key={ i } 
                                 id={ project.slug }
                                 className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' } ${ this.state.selectedProject !== '' && this.state.selectedProject !== project.slug ? 'no-show' : '' }`} 
-                                onClick={ () => this.selectProject(project.slug) }
                             >
                                 <div className={ `project-image ${ this.state.selectedProject === project.slug ? 'watch-video' : '' }`} 
                                     style={{ backgroundImage: `url(${ project.image })` }}
+                                    onClick={ () => this.selectProject(project.slug) }
                                 >
                                     <div className="project-info">
                                         <h2 className="project-title">{ project.title }</h2>
@@ -115,9 +115,11 @@ class MyWork extends Component {
                                         <p className="project-description">{ project.description }</p>
                                         <p className="click-instructions">Click to watch demo &rarr;</p>
                                     </div>
+                                    <div className="video-close">&times;</div>
+                                </div>
+                                {
+                                    this.state.showVideo &&
                                     <div className="video-wrapper">
-                                    {
-                                        this.state.showVideo &&
                                         <ReactPlayer 
                                             playing
                                             controls
@@ -129,10 +131,8 @@ class MyWork extends Component {
                                             onPause={ () => { this.isVideoPlaying = false; } }
                                             onEnded={ () => { this.isVideoPlaying = false; } }
                                         />
-                                    }
                                     </div>
-                                    <div className="video-close">&times;</div>
-                                </div>
+                                }
                             </div>
                         )
                     })

@@ -75,18 +75,6 @@
         bottom: 10px;
         opacity: 0;
         font-weight: 700; }
-      .my-work-page .work-container .project-wrapper .project-image .video-wrapper {
-        position: absolute;
-        top: 0;
-        left: -16px;
-        width: 1056px;
-        height: 576px;
-        opacity: 0;
-        -webkit-transition: opacity 0.1s ease 0.3s;
-        -moz-transition: opacity 0.1s ease 0.3s;
-        -o-transition: opacity 0.1s ease 0.3s;
-        -ms-transition: opacity 0.1s ease 0.3s;
-        transition: opacity 0.1s ease 0.3s; }
       .my-work-page .work-container .project-wrapper .project-image .video-close {
         font-size: 6rem;
         color: #fff;
@@ -102,6 +90,7 @@
       .my-work-page .work-container .project-wrapper .project-image.watch-video {
         animation-name: growVideo; }
         .my-work-page .work-container .project-wrapper .project-image.watch-video .project-info {
+          pointer-events: none;
           will-change: opacity;
           opacity: 0;
           -webkit-transition: opacity 0.1s ease;
@@ -109,7 +98,7 @@
           -o-transition: opacity 0.1s ease;
           -ms-transition: opacity 0.1s ease;
           transition: opacity 0.1s ease; }
-        .my-work-page .work-container .project-wrapper .project-image.watch-video .video-wrapper {
+        .my-work-page .work-container .project-wrapper .project-image.watch-video + .video-wrapper {
           opacity: 1;
           -webkit-transition: opacity 0.1s ease;
           -moz-transition: opacity 0.1s ease;
@@ -124,6 +113,23 @@
           -o-transition: opacity 0.3s ease 0.5s;
           -ms-transition: opacity 0.3s ease 0.5s;
           transition: opacity 0.3s ease 0.5s; }
+    .my-work-page .work-container .project-wrapper .video-wrapper {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1056px;
+      height: 576px;
+      opacity: 0;
+      -webkit-transition: opacity 0.1s ease 0.3s;
+      -moz-transition: opacity 0.1s ease 0.3s;
+      -o-transition: opacity 0.1s ease 0.3s;
+      -ms-transition: opacity 0.1s ease 0.3s;
+      transition: opacity 0.1s ease 0.3s;
+      -moz-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%); }
     .my-work-page .work-container .project-wrapper:hover .project-info {
       will-change: height;
       height: calc(100% - 50px);
