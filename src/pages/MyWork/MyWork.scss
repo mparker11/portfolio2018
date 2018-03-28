@@ -84,10 +84,19 @@
                     opacity: 0;
                     font-weight: 700;
                 }
+                .video-wrapper {
+                    position: absolute;
+                    top: 0;
+                    left: -16px;
+                    width: 1056px;
+                    height: 576px;
+                    opacity: 0;
+                    @include transition(opacity .1s ease .3s);
+                }
                 .video-close {
                     font-size: 6rem;
                     color: $white;
-                    position: fixed;
+                    position: absolute;
                     top: -75px;
                     right: -55px;
                     opacity: 0;
@@ -95,10 +104,14 @@
                 }
                 &.watch-video {
                     animation-name: growVideo;
-
+                    
                     .project-info {
                         will-change: opacity;
                         opacity: 0;
+                        @include transition(opacity .1s ease);
+                    }
+                    .video-wrapper {
+                        opacity: 1;
                         @include transition(opacity .1s ease);
                     }
                     .video-close {

@@ -47,7 +47,8 @@ canvas {
   z-index: -1; }
 
 .app {
-  width: 100vw; }
+  width: 100vw;
+  overflow: hidden; }
   .app .loader {
     position: fixed;
     top: 0;
@@ -87,6 +88,9 @@ canvas {
     padding-right: 75px;
     padding-bottom: 75px;
     background: linear-gradient(#dfe9f3, #fff); }
+    @media screen and (min-height: 940px) {
+      .app .page:not(.solid-bg) {
+        padding-bottom: 125px; } }
   .app .page .contact-link {
     text-decoration: none; }
     .app .page .contact-link:hover {

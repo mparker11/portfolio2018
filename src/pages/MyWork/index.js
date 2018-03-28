@@ -6,14 +6,18 @@ import EmailHeader from '../../components/EmailHeader';
 import PageHeader from '../../components/PageHeader';
 import InternalLink from '../../components/InternalLink';
 import projects from './projects';
+import ReactPlayer from 'react-player';
 
 class MyWork extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedProject: ''
+            selectedProject: '',
+            showVideo: false
         };
+
+        this.isVideoPlaying = false;
     }
 
     componentDidMount() {
@@ -44,6 +48,13 @@ class MyWork extends Component {
             document.querySelector(`html`).classList.add('video-scene');
             document.querySelector(`.page-description`).classList.add('video-scene');
             video.classList.add('video-scene');
+
+            if (!this.state.showVideo) {
+                //add the video
+                setTimeout(() => {
+                    this.setState({ showVideo: true });
+                }, 300);
+            }
         }
     }
 
@@ -54,14 +65,17 @@ class MyWork extends Component {
             document.querySelector(`html`).classList.remove('video-scene');
             document.querySelector(`.page-description`).classList.remove('video-scene');
             video.classList.remove('video-scene');
+
+            if (this.state.showVideo) {
+                //remove the video
+                this.setState({ showVideo: false });
+            }
         }        
     }
 
     selectProject(slug) {
         //only allowing one video to be selected at a time so it's
         //safe to make selected explicit
-
-        //AND IF VIDEO IS NOT PLAYING
         if (this.state.selectedProject === '') {
             this.setState({ selectedProject: slug })
         } else {
@@ -100,6 +114,22 @@ class MyWork extends Component {
                                         <p className="project-year">{ project.year }</p>
                                         <p className="project-description">{ project.description }</p>
                                         <p className="click-instructions">Click to watch demo &rarr;</p>
+                                    </div>
+                                    <div className="video-wrapper">
+                                    {
+                                        this.state.showVideo &&
+                                        <ReactPlayer 
+                                            playing
+                                            controls
+                                            url={ project.video } 
+                                            width={ 1056 }
+                                            height={ 576 }
+                                            playbackRate={ 1.15 }
+                                            onPlay={ () => { this.isVideoPlaying = true; } }
+                                            onPause={ () => { this.isVideoPlaying = false; } }
+                                            onEnded={ () => { this.isVideoPlaying = false; } }
+                                        />
+                                    }
                                     </div>
                                     <div className="video-close">&times;</div>
                                 </div>

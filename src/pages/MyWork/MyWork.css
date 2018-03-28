@@ -75,10 +75,22 @@
         bottom: 10px;
         opacity: 0;
         font-weight: 700; }
+      .my-work-page .work-container .project-wrapper .project-image .video-wrapper {
+        position: absolute;
+        top: 0;
+        left: -16px;
+        width: 1056px;
+        height: 576px;
+        opacity: 0;
+        -webkit-transition: opacity 0.1s ease 0.3s;
+        -moz-transition: opacity 0.1s ease 0.3s;
+        -o-transition: opacity 0.1s ease 0.3s;
+        -ms-transition: opacity 0.1s ease 0.3s;
+        transition: opacity 0.1s ease 0.3s; }
       .my-work-page .work-container .project-wrapper .project-image .video-close {
         font-size: 6rem;
         color: #fff;
-        position: fixed;
+        position: absolute;
         top: -75px;
         right: -55px;
         opacity: 0;
@@ -92,6 +104,13 @@
         .my-work-page .work-container .project-wrapper .project-image.watch-video .project-info {
           will-change: opacity;
           opacity: 0;
+          -webkit-transition: opacity 0.1s ease;
+          -moz-transition: opacity 0.1s ease;
+          -o-transition: opacity 0.1s ease;
+          -ms-transition: opacity 0.1s ease;
+          transition: opacity 0.1s ease; }
+        .my-work-page .work-container .project-wrapper .project-image.watch-video .video-wrapper {
+          opacity: 1;
           -webkit-transition: opacity 0.1s ease;
           -moz-transition: opacity 0.1s ease;
           -o-transition: opacity 0.1s ease;
