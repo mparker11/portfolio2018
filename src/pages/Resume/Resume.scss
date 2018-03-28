@@ -1,0 +1,24 @@
+@import '../../assets/css/variables.scss';
+
+.resume-page {
+    .skills-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+
+        .skill {
+            text-align: center;
+
+            &:not(:last-child) {
+                margin-right: 50px;
+            }
+            img {
+                height: 60px;
+            }
+            p {
+                margin: 8px 0 0;
+            }
+        }
+    }
+}

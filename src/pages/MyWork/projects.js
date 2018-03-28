@@ -25,7 +25,7 @@ const projects = [
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FcodeSpark.mp4?alt=media&token=6b19e97b-305e-4a71-a0f7-9ecb29bbfde6',
         description: `Multiple companion websites have been built for the indistinguishable codeSpark Academy mobile app for kids. 
                     The websites include the flagship, codespark.com, accompanied by an account managing website and blog 
-                    -- all from scratch`
+                    &mdash; all from scratch`
     },
     {
         title: 'Bus 21',
@@ -72,7 +72,7 @@ const projects = [
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Finhance_logo.jpg?alt=media&token=9342a8d7-30ea-48b9-8add-cba9eb27e882',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FInhance_Bejeweled.mp4?alt=media&token=54d0472e-0636-435b-a39d-21ba98996810',
         description: `Bejeweled. Candy Crush. Farm Heroes. One product, different variations. This is no different except it was a 
-                    kiosk app created specifically to gauge potential customers at a Vegas conference for Inhance Digital.`
+                    kiosk app created specifically to gauge potential customers at a Vegas conference for Inhance Digital &mdash; built in two weeks.`
     },
     {
         title: 'The Media Dept',

@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './MyWork.css';
 
 import EmailHeader from '../../components/EmailHeader';
-import PageHeader from '../../components/PageHeader';
 import InternalLink from '../../components/InternalLink';
+import PageHeader from '../../components/PageHeader';
 import projects from './projects';
 import ReactPlayer from 'react-player';
 
@@ -112,7 +112,7 @@ class MyWork extends Component {
                                     <div className="project-info">
                                         <h2 className="project-title">{ project.title }</h2>
                                         <p className="project-year">{ project.year }</p>
-                                        <p className="project-description">{ project.description }</p>
+                                        <p className="project-description" dangerouslySetInnerHTML={{ __html: project.description }}></p>
                                         <p className="click-instructions">Click to watch demo &rarr;</p>
                                     </div>
                                     <div className="video-close">&times;</div>
@@ -126,7 +126,7 @@ class MyWork extends Component {
                                             url={ project.video } 
                                             width={ 1056 }
                                             height={ 576 }
-                                            playbackRate={ 1.15 }
+                                            playbackRate={ 1.25 }
                                             onPlay={ () => { this.isVideoPlaying = true; } }
                                             onPause={ () => { this.isVideoPlaying = false; } }
                                             onEnded={ () => { this.isVideoPlaying = false; } }

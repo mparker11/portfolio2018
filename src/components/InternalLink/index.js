@@ -9,7 +9,7 @@ class InternalLink extends Component {
         super(props);
 
         this.state = {
-            pageTitle: props.page === 'Resume' ? 'Resumé' : props.page
+            pageTitle: props.page === 'Resume' ? 'Resumé' : 'My Work'
         }
     }
 
@@ -17,9 +17,8 @@ class InternalLink extends Component {
         return (
             <Link to={ this.props.page }>
                 <div className="internal-link-component">
-                    <div className="inner-container">
-                        <img alt="" src={ this.props.imageSrc } />
-                        <span>{ this.state.pageTitle }</span>
+                    <div className={ `inner-container ${ this.props.page.toLowerCase() }` }>
+                        <img alt={ this.state.pageTitle } src={ this.props.imageSrc } />
                     </div>
                 </div>
             </Link>

@@ -1,0 +1,13 @@
+.resume-page .skills-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; }
+  .resume-page .skills-container .skill {
+    text-align: center; }
+    .resume-page .skills-container .skill:not(:last-child) {
+      margin-right: 50px; }
+    .resume-page .skills-container .skill img {
+      height: 60px; }
+    .resume-page .skills-container .skill p {
+      margin: 8px 0 0; }
