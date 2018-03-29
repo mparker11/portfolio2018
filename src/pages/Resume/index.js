@@ -39,6 +39,11 @@ class Resume extends Component {
                         <p>Git</p>
                     </div>
                 </div>
+                <div className="divider"></div>
+                <PageHeader title="My Work Experiences" />
+                <div className="experiences-container">
+                    <div className="experience"></div>
+                </div>
             </div>
         );
     }

@@ -11,3 +11,19 @@
       height: 60px; }
     .resume-page .skills-container .skill p {
       margin: 8px 0 0; }
+
+.resume-page .divider {
+  display: block;
+  width: 50%;
+  margin: 75px auto;
+  border: none;
+  color: #fff;
+  height: 2px;
+  background: #222;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#222), to(#fff)); }
+
+.resume-page .experiences-container {
+  position: relative;
+  margin-top: 50px; }
+  .resume-page .experiences-container .experience {
+    position: absolute; }

@@ -21,4 +21,22 @@
             }
         }
     }
+    .divider {
+        display: block;
+        width: 50%;
+        margin: 75px auto;
+        border: none;
+        color: $white;
+        height: 2px;
+        background: $dark_gray;
+        background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from($dark_gray), to($white));
+    }
+    .experiences-container {
+        position: relative;
+        margin-top: 50px;
+
+        .experience {
+            position: absolute;
+        }
+    }
 }

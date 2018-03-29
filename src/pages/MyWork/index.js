@@ -92,10 +92,8 @@ class MyWork extends Component {
                 <p className="page-description">
                     From creating a featured client app for the 
                     &nbsp;<a className="link-in-text" href="https://www.ces.tech/" target="_blank" rel="noopener noreferrer">Consumer Electronics Show (CES)</a>&nbsp;
-                    to building websites for small business owners, the work you see below has been proudly created with love. 
-                    I strive to achieve the best quality, rather than working for a quick buck, and 
-                    look forward to working with those who are a stickler for the same. If you would like to chat 
-                    with me about an opportunity, please feel free to reach me using the contact info above.
+                    to building websites for small business owners, the work below has been proudly created with love to achieve the best 
+                    quality, rather than working for a quick buck.
                 </p>
                 <div className="work-container">
                 {
