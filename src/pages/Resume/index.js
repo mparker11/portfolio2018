@@ -7,6 +7,38 @@ import InternalLink from '../../components/InternalLink';
 import PageHeader from '../../components/PageHeader';
 
 class Resume extends Component {
+    componentDidMount() {
+        this.inhanceExp = document.querySelector('.experience[data-name="inhance"]');
+        this.accuagencyExp = document.querySelector('.experience[data-name="accuagency"]');
+        this.ciaExp = document.querySelector('.experience[data-name="cia"]');
+        this.codesparkExp = document.querySelector('.experience[data-name="codespark"]');
+        this.freelancingExp = document.querySelector('.experience[data-name="freelancing"]');
+        this.harrisExp = document.querySelector('.experience[data-name="harris"]');
+        this.roadtripExp = document.querySelector('.experience[data-name="roadtrip"]');
+        
+        this.watchResize = new window.WatchElementResize([
+            this.inhanceExp,
+            this.accuagencyExp,
+            this.ciaExp,
+            this.codesparkExp,
+            this.freelancingExp,
+            this.harrisExp,
+            this.roadtripExp
+        ]);
+
+        this.watchResize.on('resize', (e) => {
+            this.onExperienceResize(e.element);
+        });
+    }
+    
+    componentWillUnmount() {
+        delete this.watchResize;
+    }
+
+    onExperienceResize(element) {
+        console.log('resizing: ' + element.target.dataset.name);
+    }
+
     render() {
         return (
             <div className="resume-page page">

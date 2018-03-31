@@ -39,6 +39,7 @@
         .experience {
             position: absolute;
             border: 1px solid #8091ff;
+            @include transition(all .3s ease);
             @include transform(rotate(45deg));
             
             .front, .back {
@@ -61,6 +62,7 @@
                 @include transform(rotateY(0deg));
 
                 img {
+                    @include transition(transform .3s ease);
                     max-width: 100%;
                 }
             }
@@ -123,6 +125,41 @@
 
                 img {
                     margin-left: 20px;
+                }
+            }
+            &:hover {
+                will-change: width, height;
+
+                img {
+                    @include transform(rotate(-45deg) scale(1.05));
+                }
+                &[data-name="inhance"] {
+                    width: 344px;
+                    height: 344px;
+                }
+                &[data-name="accuagency"] {
+                    width: 325px;
+                    height: 325px;
+                }
+                &[data-name="cia"] {
+                    width: 275px;
+                    height: 275px;
+                }
+                &[data-name="codespark"] {
+                    width: 312px;
+                    height: 312px;
+                }
+                &[data-name="freelancing"] {
+                    width: 250px;
+                    height: 250px;
+                }
+                &[data-name="harris"] {
+                    width: 281px;
+                    height: 281px;
+                }
+                &[data-name="roadtrip"] {
+                    width: 325px;
+                    height: 325px;
                 }
             }
         }
