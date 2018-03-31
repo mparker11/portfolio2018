@@ -11,6 +11,9 @@ server/node_modules
 /build
 server/build
 
+## Ignore CSS files because they are generated
+src/**/*.css
+
 # misc
 .DS_Store
 .env.local
