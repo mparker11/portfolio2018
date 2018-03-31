@@ -42,7 +42,48 @@ class Resume extends Component {
                 <div className="divider"></div>
                 <PageHeader title="My Work Experiences" />
                 <div className="experiences-container">
-                    <div className="experience"></div>
+                    <div className="experience" data-name="inhance">
+                        <div className="front">
+                            <img alt="Inhance Digital Corporation" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Finhance_logo.svg?alt=media&token=e814d308-36f6-46be-8d96-1da828881e67" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
+                    <div className="experience" data-name="accuagency">
+                        <div className="front">
+                            <img alt="Assurance Systems Incorporated" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Faccuagency_logo.svg?alt=media&token=dcb7b10a-01f9-4fe3-9855-9293802ba7c3" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
+                    <div className="experience" data-name="cia">
+                        <div className="front">
+                            <img alt="Central Intelligence Agency" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fcia_logo.svg?alt=media&token=6739fcc7-ba89-4065-afe7-78e9d21aef56" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
+                    <div className="experience" data-name="codespark">
+                        <div className="front">
+                            <img alt="codeSpark Academy" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fcodespark_logo.svg?alt=media&token=cdafe743-9f8d-416d-8852-912cf6d4ba86" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
+                    <div className="experience" data-name="freelancing">
+                        <div className="front">
+                            <img alt="Freelancing" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Ffreelancing_logo.svg?alt=media&token=6aee1c18-da5c-4fbd-8158-2547e71ae9b1" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
+                    <div className="experience" data-name="harris">
+                        <div className="front">
+                            <img alt="Harris Corporation" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fharris_logo.png?alt=media&token=43a4f254-dc97-4a57-9859-59bb44b0edaf" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
+                    <div className="experience" data-name="roadtrip">
+                        <div className="front">
+                            <img alt="Roadtrip Nation" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Frtn_logo.png?alt=media&token=cdf302cd-cb99-49aa-8dff-5ad35120d244" />
+                        </div>
+                        <div className="back"></div>
+                    </div>
                 </div>
             </div>
         );
