@@ -10,7 +10,8 @@ class Layout extends Component {
 
         this.state = {
             loading: true,
-            children: null
+            children: null,
+            triggerWatchResize: false
         };
     }
 
@@ -19,6 +20,7 @@ class Layout extends Component {
         setTimeout(() => this.setState({ loading: false }, () => {
             //after the loading is done, tweak style to prepare for next page transition
             document.querySelector('.loader').classList.remove('first-time');
+            this.setResumeTrigger();
         }), 3500);
     }
     
@@ -32,30 +34,43 @@ class Layout extends Component {
                     setTimeout(() => this.setState({ 
                         loading: false, 
                         children: this.props.children 
-                    }), 300);
+                    }, this.setResumeTrigger), 300);
                 }), 300);
             });
         }
     }
 
+    setResumeTrigger() {
+        if (this.props.response.name === 'Resume') {
+            setTimeout(() => {
+                this.setState({ triggerWatchResize: true });
+            }, 5000);
+        }
+    }
+
     render() {
+        let childrenWithProps = React.Children.map(this.state.children, child =>
+            React.cloneElement(child, { triggerWatchResize: this.state.triggerWatchResize })
+        );
+
         return (
-            <Curious>
-                {({ router, response, navigation }) => {
-                    return (
-                        <div className="app">
-                            <div className={`
-                                loader 
-                                ${ this.state.loading ? 'show' : 'hide' } 
-                                ${ navigation.previous === null ? 'first-time' : '' }
-                            `}></div>
-                            { this.state.children } 
-                        </div>
-                    )
-                }}
-            </Curious>
+            <div className="app">
+                <div className={`
+                    loader 
+                    ${ this.state.loading ? 'show' : 'hide' } 
+                    ${ this.props.navigation.previous === null ? 'first-time' : '' }
+                `}></div>
+                { childrenWithProps } 
+            </div>
         );
     }
 }
 
-export default Layout;
+
+export default props => (
+    <Curious>
+        {({ router, response, navigation }) => {
+            return <Layout response={ response } navigation={ navigation } { ...props }/>
+        }}
+    </Curious>
+);

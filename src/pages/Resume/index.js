@@ -7,7 +7,18 @@ import InternalLink from '../../components/InternalLink';
 import PageHeader from '../../components/PageHeader';
 
 class Resume extends Component {
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
+        debugger;
+        if (nextProps.triggerWatchResize) {
+            this.triggerWatchResize();
+        }
+    }
+    
+    componentWillUnmount() {
+        delete this.watchResize;
+    }
+
+    triggerWatchResize() {
         this.inhanceExp = document.querySelector('.experience[data-name="inhance"]');
         this.accuagencyExp = document.querySelector('.experience[data-name="accuagency"]');
         this.ciaExp = document.querySelector('.experience[data-name="cia"]');
@@ -30,13 +41,66 @@ class Resume extends Component {
             this.onExperienceResize(e.element);
         });
     }
-    
-    componentWillUnmount() {
-        delete this.watchResize;
-    }
 
     onExperienceResize(element) {
-        console.log('resizing: ' + element.target.dataset.name);
+        const otherExps = document.querySelectorAll(`.experience:not([data-name="${ element.target.dataset.name }"])`);
+        const selectedWidth = element.offset.width;
+        const selectedHeight = element.offset.height;
+        const selectedTop = element.offset.top;
+        const selectedLeft = element.offset.left;
+        const selectedRight = element.offset.left + selectedWidth;
+        let isSelectedHovered = element.target.matches(':hover');
+
+        //make each "other" experience move in the direction it needs to
+        //based on its position relative to the hovered expereince
+        for (let i = 0; i < otherExps.length; i++) {
+            let other = otherExps[i];
+
+            //determine the position
+            let otherCenterX = other.offsetLeft + (other.offsetWidth/2);
+            let otherCenterY = other.offsetTop + (other.offsetHeight/2);
+            let positionLeft = other.style.left !== '' ? parseInt(other.style.left.replace('px', '')) : other.offsetLeft;
+            let positionTop = other.style.top !== '' ? parseInt(other.style.top.replace('px', '')) : other.offsetTop;
+
+            //determine position relative to hovered
+            if ((otherCenterY < selectedTop + (selectedHeight/2)) && (otherCenterX < selectedLeft + (selectedWidth/2))) {
+                //top left
+                if (isSelectedHovered) {
+                    other.style.top = positionTop - 1 + 'px';
+                    other.style.left = positionLeft - 1 + 'px';
+                } else {
+                    other.style.top = positionTop + 1 + 'px';
+                    other.style.left = positionLeft + 1 + 'px';
+                }
+            } else if ((otherCenterY < selectedTop + (selectedHeight/2)) && (otherCenterX >= selectedRight - (selectedWidth/2))) {
+                //top right
+                if (isSelectedHovered) {
+                    other.style.top = positionTop - 1 + 'px';
+                    other.style.left = positionLeft + 1 + 'px';
+                } else {
+                    other.style.top = positionTop + 1 + 'px';
+                    other.style.left = positionLeft - 1 + 'px';
+                }
+            } else if ((otherCenterY >= selectedTop + (selectedHeight/2)) && (otherCenterX < selectedLeft + (selectedWidth/2))) {
+                //bottom left
+                if (isSelectedHovered) {
+                    other.style.top = positionTop + 1 + 'px';
+                    other.style.left = positionLeft - 1 + 'px';
+                } else {
+                    other.style.top = positionTop - 1 + 'px';
+                    other.style.left = positionLeft + 1 + 'px';
+                }
+            } else if ((otherCenterY >= selectedTop + (selectedHeight/2)) && (otherCenterX >= selectedRight - (selectedWidth/2))) {
+                //bottom right
+                if (isSelectedHovered) {
+                    other.style.top = positionTop + 1 + 'px';
+                    other.style.left = positionLeft + 1 + 'px';
+                } else {
+                    other.style.top = positionTop - 1 + 'px';
+                    other.style.left = positionLeft - 1 + 'px';
+                }
+            }
+        }
     }
 
     render() {
