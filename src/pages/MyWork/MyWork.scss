@@ -10,7 +10,7 @@
         opacity: 1;
         @include transition(opacity .3s ease);
 
-        &.video-scene {
+        &.interactive-scene {
             opacity: 0;
         }
     }
@@ -27,7 +27,7 @@
             opacity: 1;
             @include transition(opacity .3s ease);
             
-            &:not(.video-scene) {
+            &:not(.interactive-scene) {
                 cursor: pointer;
             }
             .project-image {

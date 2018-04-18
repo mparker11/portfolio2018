@@ -34,7 +34,10 @@ html, body {
         font-family: 'SoinSanNeueRoman';
         color: $dark_gray;
     }
-    &.video-scene {
+    img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+    &.interactive-scene {
         overflow-y: hidden;
 
         .page {

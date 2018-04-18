@@ -1,109 +1,43 @@
 import React, { Component } from 'react';
+import __isEmpty from 'lodash/isEmpty';
 
 import './Resume.css';
 
 import EmailHeader from '../../components/EmailHeader';
 import InternalLink from '../../components/InternalLink';
 import PageHeader from '../../components/PageHeader';
+import experiences from './experiences';
 
 class Resume extends Component {
-    componentWillReceiveProps(nextProps) {
-        debugger;
-        if (nextProps.triggerWatchResize) {
-            this.triggerWatchResize();
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedExp: ''
         }
+    }
+
+    selectExperience(name) {
+        this.setState({ selectedExp: name });
+
+        //center the scroll at the experiences div
+        let offset = document.querySelector('.experiences-container').offsetTop;
+        window.scroll({
+            top: offset,
+            behavior: 'smooth'
+        });
+
+        document.querySelector(`html`).classList.add('interactive-scene');
     }
     
-    componentWillUnmount() {
-        delete this.watchResize;
-    }
-
-    triggerWatchResize() {
-        this.inhanceExp = document.querySelector('.experience[data-name="inhance"]');
-        this.accuagencyExp = document.querySelector('.experience[data-name="accuagency"]');
-        this.ciaExp = document.querySelector('.experience[data-name="cia"]');
-        this.codesparkExp = document.querySelector('.experience[data-name="codespark"]');
-        this.freelancingExp = document.querySelector('.experience[data-name="freelancing"]');
-        this.harrisExp = document.querySelector('.experience[data-name="harris"]');
-        this.roadtripExp = document.querySelector('.experience[data-name="roadtrip"]');
-        
-        this.watchResize = new window.WatchElementResize([
-            this.inhanceExp,
-            this.accuagencyExp,
-            this.ciaExp,
-            this.codesparkExp,
-            this.freelancingExp,
-            this.harrisExp,
-            this.roadtripExp
-        ]);
-
-        this.watchResize.on('resize', (e) => {
-            this.onExperienceResize(e.element);
-        });
-    }
-
-    onExperienceResize(element) {
-        const otherExps = document.querySelectorAll(`.experience:not([data-name="${ element.target.dataset.name }"])`);
-        const selectedWidth = element.offset.width;
-        const selectedHeight = element.offset.height;
-        const selectedTop = element.offset.top;
-        const selectedLeft = element.offset.left;
-        const selectedRight = element.offset.left + selectedWidth;
-        let isSelectedHovered = element.target.matches(':hover');
-
-        //make each "other" experience move in the direction it needs to
-        //based on its position relative to the hovered expereince
-        for (let i = 0; i < otherExps.length; i++) {
-            let other = otherExps[i];
-
-            //determine the position
-            let otherCenterX = other.offsetLeft + (other.offsetWidth/2);
-            let otherCenterY = other.offsetTop + (other.offsetHeight/2);
-            let positionLeft = other.style.left !== '' ? parseInt(other.style.left.replace('px', '')) : other.offsetLeft;
-            let positionTop = other.style.top !== '' ? parseInt(other.style.top.replace('px', '')) : other.offsetTop;
-
-            //determine position relative to hovered
-            if ((otherCenterY < selectedTop + (selectedHeight/2)) && (otherCenterX < selectedLeft + (selectedWidth/2))) {
-                //top left
-                if (isSelectedHovered) {
-                    other.style.top = positionTop - 1 + 'px';
-                    other.style.left = positionLeft - 1 + 'px';
-                } else {
-                    other.style.top = positionTop + 1 + 'px';
-                    other.style.left = positionLeft + 1 + 'px';
-                }
-            } else if ((otherCenterY < selectedTop + (selectedHeight/2)) && (otherCenterX >= selectedRight - (selectedWidth/2))) {
-                //top right
-                if (isSelectedHovered) {
-                    other.style.top = positionTop - 1 + 'px';
-                    other.style.left = positionLeft + 1 + 'px';
-                } else {
-                    other.style.top = positionTop + 1 + 'px';
-                    other.style.left = positionLeft - 1 + 'px';
-                }
-            } else if ((otherCenterY >= selectedTop + (selectedHeight/2)) && (otherCenterX < selectedLeft + (selectedWidth/2))) {
-                //bottom left
-                if (isSelectedHovered) {
-                    other.style.top = positionTop + 1 + 'px';
-                    other.style.left = positionLeft - 1 + 'px';
-                } else {
-                    other.style.top = positionTop - 1 + 'px';
-                    other.style.left = positionLeft + 1 + 'px';
-                }
-            } else if ((otherCenterY >= selectedTop + (selectedHeight/2)) && (otherCenterX >= selectedRight - (selectedWidth/2))) {
-                //bottom right
-                if (isSelectedHovered) {
-                    other.style.top = positionTop + 1 + 'px';
-                    other.style.left = positionLeft + 1 + 'px';
-                } else {
-                    other.style.top = positionTop - 1 + 'px';
-                    other.style.left = positionLeft - 1 + 'px';
-                }
-            }
-        }
+    deselectExperience() {
+        this.setState({ selectedExp: '' });
+        document.querySelector('html').classList.remove('interactive-scene');
     }
 
     render() {
+        let { selectedExp } = this.state;
+
         return (
             <div className="resume-page page">
                 <EmailHeader />
@@ -138,48 +72,23 @@ class Resume extends Component {
                 <div className="divider"></div>
                 <PageHeader title="My Work Experiences" />
                 <div className="experiences-container">
-                    <div className="experience" data-name="inhance">
-                        <div className="front">
-                            <img alt="Inhance Digital Corporation" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Finhance_logo.svg?alt=media&token=e814d308-36f6-46be-8d96-1da828881e67" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
-                    <div className="experience" data-name="accuagency">
-                        <div className="front">
-                            <img alt="Assurance Systems Incorporated" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Faccuagency_logo.svg?alt=media&token=dcb7b10a-01f9-4fe3-9855-9293802ba7c3" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
-                    <div className="experience" data-name="cia">
-                        <div className="front">
-                            <img alt="Central Intelligence Agency" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fcia_logo.svg?alt=media&token=6739fcc7-ba89-4065-afe7-78e9d21aef56" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
-                    <div className="experience" data-name="codespark">
-                        <div className="front">
-                            <img alt="codeSpark Academy" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fcodespark_logo.svg?alt=media&token=cdafe743-9f8d-416d-8852-912cf6d4ba86" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
-                    <div className="experience" data-name="freelancing">
-                        <div className="front">
-                            <img alt="Freelancing" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Ffreelancing_logo.svg?alt=media&token=6aee1c18-da5c-4fbd-8158-2547e71ae9b1" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
-                    <div className="experience" data-name="harris">
-                        <div className="front">
-                            <img alt="Harris Corporation" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fharris_logo.png?alt=media&token=43a4f254-dc97-4a57-9859-59bb44b0edaf" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
-                    <div className="experience" data-name="roadtrip">
-                        <div className="front">
-                            <img alt="Roadtrip Nation" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Frtn_logo.png?alt=media&token=cdf302cd-cb99-49aa-8dff-5ad35120d244" />
-                        </div>
-                        <div className="back"></div>
-                    </div>
+                {
+                    experiences.map((experience, i) => {
+                        return (
+                            <div key={ i }>
+                                <div data-name={ experience.name } 
+                                    className={ `experience ${ selectedExp === experience.name ? 'selected' : !__isEmpty(selectedExp) ? 'not-selected' : '' }` }
+                                    onClick={ () => this.selectExperience(experience.name) }
+                                >
+                                    <div className="details">
+                                        <img alt={ experience.fullname } src={ experience.logoSrc } />
+                                    </div>
+                                </div>
+                                <div className="experience-close" onClick={ () => this.deselectExperience() }>&times;</div>
+                            </div>
+                        )
+                    })
+                }
                 </div>
             </div>
         );

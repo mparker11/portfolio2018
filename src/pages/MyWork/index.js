@@ -45,9 +45,9 @@ class MyWork extends Component {
                 smooth: 'easeInOutQuad'
             });
 
-            document.querySelector(`html`).classList.add('video-scene');
-            document.querySelector(`.page-description`).classList.add('video-scene');
-            video.classList.add('video-scene');
+            document.querySelector(`html`).classList.add('interactive-scene');
+            document.querySelector(`.page-description`).classList.add('interactive-scene');
+            video.classList.add('interactive-scene');
 
             if (!this.state.showVideo) {
                 //add the video
@@ -62,9 +62,9 @@ class MyWork extends Component {
         if (this.state.selectedProject !== '') {
             const video = document.querySelector(`#${ this.state.selectedProject }`);
     
-            document.querySelector(`html`).classList.remove('video-scene');
-            document.querySelector(`.page-description`).classList.remove('video-scene');
-            video.classList.remove('video-scene');
+            document.querySelector('html').classList.remove('interactive-scene');
+            document.querySelector('.page-description').classList.remove('interactive-scene');
+            video.classList.remove('interactive-scene');
 
             if (this.state.showVideo) {
                 //remove the video
@@ -90,10 +90,10 @@ class MyWork extends Component {
                 <InternalLink page="Resume" imageSrc="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2FGradient-Resume%20Icon.svg?alt=media&token=72d3d88e-a5ba-47cb-87aa-58b3b6a66b33" />
                 <PageHeader title="My Work Showcase" />
                 <p className="page-description">
-                    From creating a featured client app for the 
+                    From a featured client app for the 
                     &nbsp;<a className="link-in-text" href="https://www.ces.tech/" target="_blank" rel="noopener noreferrer">Consumer Electronics Show (CES)</a>&nbsp;
-                    to building websites for small business owners, the work below has been proudly created with love to achieve the best 
-                    quality, rather than working for a quick buck.
+                    to websites for small business owners, the work below has been proudly created with love to achieve the best 
+                    quality, rather than for a quick buck.
                 </p>
                 <div className="work-container">
                 {

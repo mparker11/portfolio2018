@@ -20,7 +20,6 @@ class Layout extends Component {
         setTimeout(() => this.setState({ loading: false }, () => {
             //after the loading is done, tweak style to prepare for next page transition
             document.querySelector('.loader').classList.remove('first-time');
-            this.setResumeTrigger();
         }), 3500);
     }
     
@@ -34,17 +33,11 @@ class Layout extends Component {
                     setTimeout(() => this.setState({ 
                         loading: false, 
                         children: this.props.children 
-                    }, this.setResumeTrigger), 300);
+                    }, () => {
+                        document.querySelector(`html`).classList.remove('interactive-scene');
+                    }), 300);
                 }), 300);
             });
-        }
-    }
-
-    setResumeTrigger() {
-        if (this.props.response.name === 'Resume') {
-            setTimeout(() => {
-                this.setState({ triggerWatchResize: true });
-            }, 5000);
         }
     }
 
