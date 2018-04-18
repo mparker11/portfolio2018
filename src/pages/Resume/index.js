@@ -80,8 +80,9 @@ class Resume extends Component {
                                     className={ `experience ${ selectedExp === experience.name ? 'selected' : !__isEmpty(selectedExp) ? 'not-selected' : '' }` }
                                     onClick={ () => this.selectExperience(experience.name) }
                                 >
-                                    <div className="details">
+                                    <div className="details-container">
                                         <img alt={ experience.fullname } src={ experience.logoSrc } />
+                                        <div className="detailed-content" dangerouslySetInnerHTML={{ __html: experience.details }}></div>
                                     </div>
                                 </div>
                                 <div className="experience-close" onClick={ () => this.deselectExperience() }>&times;</div>
