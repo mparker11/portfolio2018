@@ -1,6 +1,15 @@
 @import '../../assets/css/variables.scss';
 
 .resume-page {
+    .no-interactive {
+        opacity: 1;
+        @include transition(opacity .3s ease .5s);
+        
+        &.interactive-scene {
+            opacity: 0;
+            @include transition(opacity .3s ease 0s);
+        }
+    }
     .skills-container {
         display: flex;
         justify-content: center;
@@ -36,178 +45,264 @@
         margin: 50px auto;
         height: 700px;
 
-        .experience {
+        .center-gravity {
             position: absolute;
-            border: 1px solid #8091ff;
-            background-color: $white;
-            @include transform(rotate(45deg));
-            @include transition(
-                top .5s ease 0s,
-                left .5s ease 0s,
-                width .5s ease .15s,
-                height .5s ease .15s,
-                transform .5s ease 0s,
-                opacity .3s ease .5s
-            );
+            top: 40%;
+            left: 50%;
 
-            .details-container {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                @include transition(all .5s ease .1s);
-                @include transform(rotate(-45deg));
+            .experience {
+                position: absolute;
+                border: 1px solid #8091ff;
+                background-color: $white;
+                transform-origin: top;
+                @include transform(rotate(45deg));
+                @include transition(
+                    top .5s ease 0s,
+                    left .5s ease 0s,
+                    width .5s ease .15s,
+                    height .5s ease .15s,
+                    transform .5s ease 0s,
+                    box-shadow .25s ease,
+                    opacity .3s ease .5s
+                );
     
-                img {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    max-width: 250px;
-                    max-height: 100px;
-                    @include transform(translate(-50%, -50%));
+                .details-container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
                     @include transition(all .5s ease .1s);
+                    @include transform(rotate(-45deg));
+        
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        max-width: 250px;
+                        max-height: 100px;
+                        @include transform(translate3d(-50%, -50%, 0));
+                        @include transition(all .5s ease .1s);
+                    }
+                    .detailed-content {
+                        position: absolute;
+                        top: 125px;
+                        left: 0;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        opacity: 0;
+                        pointer-events: none;
+                        @include transition(opacity .1s ease 0s);
+    
+                        .intro {
+                            display: flex;
+                            justify-content: space-between;
+    
+                            p {
+                                margin-bottom: 0;
+                                font-weight: 700;
+    
+                                &.dates {
+                                    font-style: italic;
+                                }
+                            }
+                        }
+                        .synopsis {
+                            text-align: justify;
+                        }
+                        .tech-applied {
+                            line-height: 1.5;
+                        }
+                        .accomplishments {
+                            margin-top: 20px;
+    
+                            ul {
+                                margin-top: 5px;
+    
+                                li:not(:last-child) {
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+                    }
                 }
-                .detailed-content {
-                    position: absolute;
-                    top: 125px;
+                &[data-name="inhance"] {
+                    width: 275px;
+                    height: 275px;
+                    top: -170px;
+                    left: -209px;
+                }
+                &[data-name="accuagency"] {
+                    width: 260px;
+                    height: 260px;
+                    top: 166px;
+                    left: -153px;
+                }
+                &[data-name="cia"] {
+                    width: 220px;
+                    height: 220px;
+                    top: -49px;
+                    left: 343px;
+    
+                    img {
+                        max-height: 125px; 
+                    }
+                }
+                &[data-name="codespark"] {
+                    width: 250px;
+                    height: 250px;
+                    top: 36px;
+                    left: -386px;
+                }
+                &[data-name="freelancing"] {
+                    width: 200px;
+                    height: 200px;
+                    top: 0;
                     left: 0;
-                    padding-left: 20px;
-                    padding-right: 20px;
+                }
+                &[data-name="harris"] {
+                    width: 225px;
+                    height: 225px;
+                    top: -171px;
+                    left: 141px;
+    
+                    img {
+                        top: calc(50% + 10px);
+                    }
+                }
+                &[data-name="roadtrip"] {
+                    width: 260px;
+                    height: 260px;
+                    top: 123px;
+                    left: 178px;
+                }
+                &.not-selected {
                     opacity: 0;
                     pointer-events: none;
                     @include transition(opacity .1s ease 0s);
-
-                    .intro {
-                        display: flex;
-                        justify-content: space-between;
-
-                        p {
-                            margin-bottom: 0;
-                            font-weight: 700;
-
-                            &.dates {
-                                font-style: italic;
-                            }
+                }
+                &.selected {
+                    top: calc(100vh * -0.35);
+                    left: 50%;
+                    width: 750px;
+                    height: 525px;
+                    will-change: top, left, width, height;
+                    @include transform(rotate(0) translateX(-50%));
+                    @include transition(
+                        top .5s ease .05s,
+                        left .5s ease .05s,
+                        width .5s ease .05s,
+                        height .5s ease .05s,
+                        transform .5s ease .05s
+                    );
+    
+                    .details-container {
+                        @include transform(rotate(0));
+    
+                        img {
+                            top: 20px;
+                            max-width: 250px;
+                            max-height: 100px;
+                            @include transform(translateX(-50%));
+                        }
+                        .detailed-content {
+                            opacity: 1;
+                            pointer-events: all;
+                            @include transition(opacity .3s ease .6s);
                         }
                     }
-                    .synopsis {
-                        text-align: justify;
+                    @media screen and (min-height: 800px) {
+                        top: calc(100vh * -0.25);
                     }
-                    .tech-applied {
-                        line-height: 1.5;
+                }
+                &:hover:not(.selected) {
+                    cursor: pointer;
+                    
+                    &[data-name="inhance"] {
+                        box-shadow: inset 0px 0px 10px #e03827;
                     }
-                    .accomplishments {
-                        margin-top: 20px;
-
-                        ul {
-                            margin-top: 5px;
-
-                            li:not(:last-child) {
-                                margin-bottom: 5px;
-                            }
-                        }
+                    &[data-name="accuagency"] {
+                        box-shadow: inset 0px 0px 10px #004b88;
+                    }
+                    &[data-name="cia"] {
+                        box-shadow: inset 0px 0px 10px #203aff;
+                    }
+                    &[data-name="codespark"] {
+                        box-shadow: inset 0px 0px 10px #ffce00;
+                    }
+                    &[data-name="freelancing"] {
+                        box-shadow: inset 0px 0px 10px #d60dd6;
+                    }
+                    &[data-name="harris"] {
+                        box-shadow: inset 0px 0px 10px #000;
+                    }
+                    &[data-name="roadtrip"] {
+                        box-shadow: inset 0px 0px 10px #50d337;
                     }
                 }
             }
-            &[data-name="inhance"] {
-                width: 275px;
-                height: 275px;
-                top: 68px;
-                left: 393px;
-            }
-            &[data-name="accuagency"] {
-                width: 260px;
-                height: 260px;
-                top: 408px;
-                left: 454px;
-            }
-            &[data-name="cia"] {
-                width: 220px;
-                height: 220px;
-                top: 198px;
-                left: 965px;
-
-                img {
-                    max-height: 125px; 
-                }
-            }
-            &[data-name="codespark"] {
-                width: 250px;
-                height: 250px;
-                top: 278px;
-                left: 225px;
-            }
-            &[data-name="freelancing"] {
-                width: 200px;
-                height: 200px;
-                top: 250px;
-                left: calc(50% - 100px);
-            }
-            &[data-name="harris"] {
-                width: 225px;
-                height: 225px;
-                top: 75px;
-                left: 761px;
-
-                img {
-                    top: calc(50% + 10px);
-                }
-            }
-            &[data-name="roadtrip"] {
-                width: 260px;
-                height: 260px;
-                top: 365px;
-                left: 786px;
-            }
-            & + .experience-close {
+            .experience-close {
                 font-size: 6rem;
                 color: $white;
                 position: absolute;
-                top: 20px;
+                top: calc(100vh * -0.35 - 70px);
                 left: calc(50% + 375px);
                 opacity: 0;
                 pointer-events: none;
                 @include transition(opacity .1s ease);
-            }
-            &.not-selected {
-                opacity: 0;
-                pointer-events: none;
-                @include transition(opacity .1s ease 0s);
-            }
-            &.selected {
-                top: 100px;
-                left: 50%;
-                width: 750px;
-                height: 525px;
-                @include transform(rotate(0) translateX(-50%));
-                @include transition(
-                    top .5s ease .05s,
-                    left .5s ease .05s,
-                    width .5s ease .05s,
-                    height .5s ease .05s,
-                    transform .5s ease .05s
-                );
-                will-change: top, left, width, height;
 
-                .details-container {
-                    @include transform(rotate(0));
-
-                    img {
-                        top: 20px;
-                        max-width: 250px;
-                        max-height: 100px;
-                        @include transform(translateX(-50%));
-                    }
-                    .detailed-content {
-                        opacity: 1;
-                        pointer-events: all;
-                        @include transition(opacity .3s ease .6s);
-                    }
+                @media screen and (min-height: 800px) {
+                    top: calc(100vh * -0.25 - 70px);
                 }
-                & + .experience-close {
+            }
+            &.interactive-scene {
+                .experience-close {
                     opacity: 1;
                     cursor: pointer;
                     pointer-events: all;
                     @include transition(opacity .3s ease .5s);
+                }
+            }
+        }
+    }
+    .education {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .ed-block {
+            width: 250px;
+            height: 250px;
+            background-color: $white;
+            border: 1px solid #8091ff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                max-width: 75%;
+                max-height: 150px;
+            }
+            &:first-child {
+                margin-right: 100px;
+            }
+            &.rotated {
+                width: 240px;
+                height: 240px;
+                @include transform(rotate(45deg));
+                
+                img {
+                    max-width: 70%;
+                    transform-origin: bottom;
+                    @include transform(rotate(-45deg));
+                }
+                p {
+                    position: relative;
+                    left: 15px;
+                    transform-origin: top;
+                    @include transform(rotate(-45deg));
                 }
             }
         }
