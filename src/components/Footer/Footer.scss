@@ -1,0 +1,21 @@
+@import '../../assets/css/variables.scss';
+
+.footer-component {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 75px;
+
+    p {
+        font-size: 0.875rem;
+        margin: 0;
+
+        a {
+            text-decoration: none;
+
+            &:hover {
+                color: $link_blue;
+            }
+        }
+    }
+}

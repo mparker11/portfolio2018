@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Curious } from '@curi/react';
+import { Curious, Link } from '@curi/react';
 import __isEqual from 'lodash/isEqual';
 
 import './Layout.css';
+
+import Footer from '../Footer';
 
 class Layout extends Component {
     constructor(props) {
@@ -45,7 +47,7 @@ class Layout extends Component {
         let childrenWithProps = React.Children.map(this.state.children, child =>
             React.cloneElement(child, { triggerWatchResize: this.state.triggerWatchResize })
         );
-
+        
         return (
             <div className="app">
                 <div className={`
@@ -54,6 +56,10 @@ class Layout extends Component {
                     ${ this.props.navigation.previous === null ? 'first-time' : '' }
                 `}></div>
                 { childrenWithProps } 
+                {
+                    this.props.response.name !== 'Home' &&
+                    <Footer />
+                }
             </div>
         );
     }
