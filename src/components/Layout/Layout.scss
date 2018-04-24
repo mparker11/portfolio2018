@@ -45,6 +45,10 @@ html, body {
             will-change: opacity;
             @include transition(background .3s ease);
         }
+        .footer-component {
+            height: 0;
+            opacity: 0;
+        }
     }
 }
 canvas {

@@ -108,8 +108,10 @@ class MyWork extends Component {
                                     onClick={ () => this.selectProject(project.slug) }
                                 >
                                     <div className="project-info">
-                                        <h2 className="project-title">{ project.title }</h2>
-                                        <p className="project-year">{ project.year }</p>
+                                        <div className="top">
+                                            <h2 className="project-title">{ project.title }</h2>
+                                            <p className="project-year">{ project.year }</p>
+                                        </div>
                                         <p className="project-description" dangerouslySetInnerHTML={{ __html: project.description }}></p>
                                         <p className="click-instructions">Click to watch demo &rarr;</p>
                                     </div>
