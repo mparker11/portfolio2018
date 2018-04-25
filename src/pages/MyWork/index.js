@@ -26,51 +26,49 @@ class MyWork extends Component {
         });
     }
 
-    componentWillUpdate() {
-        this.unsetVideoScene();
-    }
-
-    componentDidUpdate() {
-        this.setVideoScene();
-    }
-
-    setVideoScene() {
-        if (this.state.selectedProject !== '') {
-            const video = document.querySelector(`#${ this.state.selectedProject }`);
-            const offset = 125;
-            const view = video.offsetTop - offset;
-            
-            this.scroll.scrollTo(view, {
-                duration: 300,
-                smooth: 'easeInOutQuad'
-            });
-
-            document.querySelector(`html`).classList.add('interactive-scene');
-            document.querySelector(`.page-description`).classList.add('interactive-scene');
-            video.classList.add('interactive-scene');
-
-            if (!this.state.showVideo) {
-                //add the video
-                setTimeout(() => {
-                    this.setState({ showVideo: true });
-                }, 300);
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.selectedProject !== this.state.selectedProject) {
+            if (this.state.selectedProject === '') {
+                this.unsetVideoScene(prevState.selectedProject);
+            } else {
+                this.setVideoScene(this.state.selectedProject);
             }
         }
     }
 
-    unsetVideoScene() {
-        if (this.state.selectedProject !== '') {
-            const video = document.querySelector(`#${ this.state.selectedProject }`);
-    
-            document.querySelector('html').classList.remove('interactive-scene');
-            document.querySelector('.page-description').classList.remove('interactive-scene');
-            video.classList.remove('interactive-scene');
+    setVideoScene(selectedProject) {
+        const video = document.querySelector(`#${ selectedProject }`);
+        const offset = 125;
+        const view = video.offsetTop - offset;
+        
+        this.scroll.scrollTo(view, {
+            duration: 300,
+            smooth: 'easeInOutQuad'
+        });
 
-            if (this.state.showVideo) {
-                //remove the video
-                this.setState({ showVideo: false });
-            }
-        }        
+        document.querySelector(`html`).classList.add('interactive-scene');
+        document.querySelector(`.page-description`).classList.add('interactive-scene');
+        video.classList.add('interactive-scene');
+
+        if (!this.state.showVideo) {
+            //add the video
+            setTimeout(() => {
+                this.setState({ showVideo: true });
+            }, 300);
+        }
+    }
+
+    unsetVideoScene(selectedProject) {
+        const video = document.querySelector(`#${ selectedProject }`);
+
+        document.querySelector('html').classList.remove('interactive-scene');
+        document.querySelector('.page-description').classList.remove('interactive-scene');
+        video.classList.remove('interactive-scene');
+
+        if (this.state.showVideo) {
+            //remove the video
+            this.setState({ showVideo: false });
+        }
     }
 
     selectProject(slug) {
