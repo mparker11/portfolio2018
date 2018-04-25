@@ -18,6 +18,7 @@ class MyWork extends Component {
         };
 
         this.isVideoPlaying = false;
+        this.scroll = null;
     }
 
     componentDidMount() {
