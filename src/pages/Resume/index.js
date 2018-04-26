@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Curious } from '@curi/react';
 import __isEmpty from 'lodash/isEmpty';
 import __find from 'lodash/find';
 
@@ -10,9 +11,6 @@ import PageHeader from '../../components/PageHeader';
 import masterExperienceList from './experiences';
 import Modal from 'react-modal';
 
-const { detect } = require('detect-browser');
-const browser = detect();
-
 class Resume extends Component {
     constructor(props) {
         super(props);
@@ -22,11 +20,13 @@ class Resume extends Component {
             showModal: false,
             modalExpDetails: null
         }
+
+        this.browser = props.response.data.browser;
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.selectedExp !== this.state.selectedExp) {
-            if (browser.name !== 'safari' && browser.name !== 'edge' && browser.name !== 'ie') {
+            if (this.browser.name !== 'safari' && this.browser.name !== 'edge' && this.browser.name !== 'ie') {
                 if (!__isEmpty(this.state.selectedExp)) {
                     this.selectExperienceForGreatBrowsers();
                 } else {
@@ -180,4 +180,10 @@ class Resume extends Component {
     }
 }
 
-export default Resume;
+export default props => (
+    <Curious>
+        {({ router, response, navigation }) => {
+            return <Resume response={ response } { ...props }/>
+        }}
+    </Curious>
+);

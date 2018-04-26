@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from '@curi/react';
+import { Curious, Link } from '@curi/react';
 
 import './Home.css';
 
@@ -112,4 +112,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default props => (
+    <Curious>
+        {({ router, response, navigation }) => {
+            return <Home response={ response } { ...props }/>
+        }}
+    </Curious>
+);

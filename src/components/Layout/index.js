@@ -21,7 +21,9 @@ class Layout extends Component {
         setTimeout(() => this.setState({ children: this.props.children }), 0);
         setTimeout(() => this.setState({ loading: false }, () => {
             //after the loading is done, tweak style to prepare for next page transition
-            document.querySelector('.loader').classList.remove('first-time');
+            if (!this.props.response.data.isMobile) {
+                document.querySelector('.loader').classList.remove('first-time');
+            }
         }), 3500);
     }
     
@@ -50,29 +52,35 @@ class Layout extends Component {
         
         return (
             <div className="app">
-                <div className={`
-                    loader 
-                    ${ this.state.loading ? 'show' : 'hide' } 
-                    ${ this.props.navigation.previous === null ? 'first-time' : '' }
-                `}></div>
+                {
+                    !this.props.response.data.isMobile &&
+                    <div className={`
+                        loader 
+                        ${ this.state.loading ? 'show' : 'hide' } 
+                        ${ this.props.navigation.previous === null ? 'first-time' : '' }
+                    `}></div>
+                }
                 { childrenWithProps } 
                 {
-                    this.props.response.name !== 'Home' &&
+                    (this.props.response.name !== 'Home' && !this.props.response.data.isMobile) &&
                     <Footer />
                 }
-                <div className="no-less-1280">
-                    <div>
-                        <h1>Oops, you caught me!</h1>
-                        <p>
-                            Most modern screens have a resolution wider than 1280 pixels, so I didn&rsquo;t think 
-                            coding for responsiveness was necessary. 
-                            <br /><br />
-                            Please visit the site on a larger screen or drag the browser to be wider. 
-                            <br /><br />
-                            Thanks!
-                        </p>
+                {
+                    !this.props.response.data.isMobile &&
+                    <div className="no-less-1280">
+                        <div>
+                            <h1>Oops, you caught me!</h1>
+                            <p>
+                                Most modern screens have a resolution wider than 1280 pixels, so I didn&rsquo;t think 
+                                coding for responsiveness was necessary. 
+                                <br /><br />
+                                Please visit the site on a larger screen or drag the browser to be wider. 
+                                <br /><br />
+                                Thanks!
+                            </p>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         );
     }

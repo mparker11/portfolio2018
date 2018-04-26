@@ -101,15 +101,21 @@ canvas {
         }
     }
     .page {
-        &:not(.solid-bg) {
+        &:not(.mobile-page) {
             padding-left: 75px;
             padding-right: 75px;
             padding-bottom: 75px;
-            background: linear-gradient(#dfe9f3, $white);
-
+            
             @media screen and (min-height: 940px) {
                 padding-bottom: 125px;
             }
+        }
+        &:not(.solid-bg) {
+            background: linear-gradient(#dfe9f3, $white);
+        }
+        &.mobile-page {
+            width: 100vw;
+            height: 100vh;
         }
         .contact-link {
             text-decoration: none;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Curious } from '@curi/react';
 import __find from 'lodash/find';
 
 import './MyWork.css';
@@ -9,9 +10,6 @@ import PageHeader from '../../components/PageHeader';
 import projects from './projects';
 import ReactPlayer from 'react-player';
 import Modal from 'react-modal';
-
-const { detect } = require('detect-browser');
-const browser = detect();
 
 class MyWork extends Component {
     constructor(props) {
@@ -26,9 +24,11 @@ class MyWork extends Component {
 
         this.isVideoPlaying = false;
         this.scroll = null;
+        this.browser = props.response.data.browser;
     }
 
     componentDidMount() {
+        console.log(this.props.response)
         import('react-scroll').then((Scroll) => {
             this.scroll = Scroll.animateScroll;
         });
@@ -36,7 +36,7 @@ class MyWork extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.selectedProject !== this.state.selectedProject) {
-            if (browser.name !== 'safari' && browser.name !== 'edge' && browser.name !== 'ie') {
+            if (this.browser.name !== 'safari' && this.browser.name !== 'edge' && this.browser.name !== 'ie') {
                 if (this.state.selectedProject === '') {
                     this.unsetVideoSceneForGreatBrowsers(prevState.selectedProject);
                 } else {
@@ -137,7 +137,7 @@ class MyWork extends Component {
                                 id={ project.slug }
                                 className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' }`} 
                             >
-                                <div className={ `project-image ${ browser.name !== 'safari' ? 'not-safari' : '' }` } 
+                                <div className={ `project-image ${ this.browser.name !== 'safari' ? 'not-safari' : '' }` } 
                                     style={{ backgroundImage: `url(${ project.image })` }}
                                     onClick={ () => this.selectProject(project.slug) }
                                 >
@@ -202,4 +202,10 @@ class MyWork extends Component {
     }
 }
 
-export default MyWork;
+export default props => (
+    <Curious>
+        {({ router, response, navigation }) => {
+            return <MyWork response={ response } { ...props }/>
+        }}
+    </Curious>
+);
