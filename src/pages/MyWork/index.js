@@ -137,7 +137,7 @@ class MyWork extends Component {
                                 id={ project.slug }
                                 className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' }`} 
                             >
-                                <div className="project-image" 
+                                <div className={ `project-image ${ browser.name !== 'safari' ? 'not-safari' : '' }` } 
                                     style={{ backgroundImage: `url(${ project.image })` }}
                                     onClick={ () => this.selectProject(project.slug) }
                                 >

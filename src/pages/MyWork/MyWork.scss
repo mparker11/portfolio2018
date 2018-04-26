@@ -28,7 +28,7 @@
             margin-top: 100px;
             margin-bottom: 100px;
             opacity: 1;
-            @include transition(opacity .3s ease);
+            @include transition(opacity .3s ease .3s);
             
             &:not(.interactive-scene) {
                 cursor: pointer;
@@ -41,11 +41,13 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 border-radius: 6px;
-                animation-name: shrinkVideo;
                 animation-fill-mode: forwards;
                 animation-duration: .5s;
                 will-change: width, height, transform, left;
                 
+                &.not-safari {
+                    animation-name: shrinkVideo;
+                }
                 .project-info {
                     position: absolute;
                     top: 0;
@@ -170,6 +172,7 @@
                 pointer-events: none;
                 opacity: 0;
                 will-change: opacity;
+                @include transition(opacity .1s ease);
             }
         }
     }

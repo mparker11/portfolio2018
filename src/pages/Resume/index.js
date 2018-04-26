@@ -88,7 +88,7 @@ class Resume extends Component {
     }
     
     render() {
-        let { selectedExp, modalExpDetails } = this.state;
+        let { modalExpDetails } = this.state;
 
         return (
             <div className="resume-page page">
