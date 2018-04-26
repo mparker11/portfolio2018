@@ -19,28 +19,60 @@
             line-height: 1;
             letter-spacing: $title_spacing;
         }
+        @media screen and (min-width: 640px) {
+            .title {
+                font-size: 2.25rem;
+            }
+            .subtitle {
+                font-size: 1.375rem;
+            }
+        }
     }
     .about-me {
-        padding: 20px;
+        margin-top: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
         
         p {
             line-height: 1.5;
-        }
-        a {
-            color: $link_blue;
+            margin: 0;
         }
         @media screen and (min-width: 640px) {
             max-width: 60%;
-            margin: auto;
+            margin: 30px auto 0;
+
+            p {
+                font-size: 1.25rem;
+            }
         }
     }
-    .mobile-resume-button {
+    .contact-block {
+        .mobile-button {
+            margin: 20px auto;
+        }
+        @media screen and (min-width: 640px) {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            
+            .mobile-button {
+                margin: 0;
+
+                &:first-of-type {
+                    margin-right: 40px;
+                }
+            }
+        }
+    }
+    .mobile-button {
         display: block;
         width: 50%;
         max-width: 200px;
-        margin: 30px auto 0;
+        margin: 20px auto 0;
         padding-top: 15px;
         padding-bottom: 15px;
+        font-size: 0.9375rem;
+        line-height: 1;
         border-width: 2px;
         border-style: solid;
         -webkit-border-image: linear-gradient(#c2e59c, #64b3f4) 10;
@@ -51,6 +83,13 @@
         text-decoration: none;
         @include transition(all .3s ease);
 
+        &.opposite {
+            -webkit-border-image: linear-gradient(#64b3f4, #c2e59c) 10;
+            border-image: linear-gradient(#64b3f4, #c2e59c) 10;
+        }
+        @media screen and (min-width: 640px) {
+            margin-top: 30px;
+        }
         // &:after {
         //     content: '';
         //     position: absolute;
