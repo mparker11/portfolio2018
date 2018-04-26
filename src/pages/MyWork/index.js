@@ -29,15 +29,20 @@ class MyWork extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.selectedProject !== this.state.selectedProject) {
+            //Chrome and Firefox
+            
             if (this.state.selectedProject === '') {
-                this.unsetVideoScene(prevState.selectedProject);
+                this.unsetVideoSceneForGreatBrowsers(prevState.selectedProject);
             } else {
-                this.setVideoScene(this.state.selectedProject);
+                this.setVideoSceneForGreatBrowsers(this.state.selectedProject);
             }
+
+            //Safari and Edge
+            
         }
     }
 
-    setVideoScene(selectedProject) {
+    setVideoSceneForGreatBrowsers(selectedProject) {
         const video = document.querySelector(`#${ selectedProject }`);
         const offset = 125;
         const view = video.offsetTop - offset;
@@ -59,7 +64,7 @@ class MyWork extends Component {
         }
     }
 
-    unsetVideoScene(selectedProject) {
+    unsetVideoSceneForGreatBrowsers(selectedProject) {
         const video = document.querySelector(`#${ selectedProject }`);
 
         document.querySelector('html').classList.remove('interactive-scene');
@@ -76,9 +81,9 @@ class MyWork extends Component {
         //only allowing one video to be selected at a time so it's
         //safe to make selected explicit
         if (this.state.selectedProject === '') {
-            this.setState({ selectedProject: slug })
+            this.setState({ selectedProject: slug });
         } else {
-            this.setState({ selectedProject: '' })
+            this.setState({ selectedProject: '' });
         }
     }
 

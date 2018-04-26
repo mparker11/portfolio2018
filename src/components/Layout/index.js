@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Curious, Link } from '@curi/react';
+import { Curious } from '@curi/react';
 import __isEqual from 'lodash/isEqual';
 
 import './Layout.css';

@@ -7,58 +7,48 @@ const routes = [
     { 
         name: 'Home', 
         path: '',
-        match: {
-            response: ({ set }) => {
-                set.body(Home);
-            }
-        } 
+        response: () => ({
+            body: Home
+        })
     },
     { 
         name: 'MyWork', 
         path: 'my-work',
+        response: () => ({
+            body: MyWork
+        }),
         children: [
             { 
                 name: 'Project', 
                 path: ':title',
-                match: {
-                    response: ({ set }) => {
-                        set.body(MyWork);
-                    }
-                }
+                response: () => ({
+                    body: MyWork
+                })
             }
-        ],
-        match: {
-            response: ({ set }) => {
-                set.body(MyWork);
-            }
-        }
+        ]
     },
     { 
         name: 'Resume', 
         path: 'resume',
-        match: {
-            response: ({ set }) => {
-                set.body(Resume);
-            }
-        }
+        response: () => ({
+            body: Resume
+        })
     },
     { 
         name: 'Mobile', 
         path: 'mobile',
-        match: {
-            response: ({ set }) => {
-                set.body(Mobile);
-            }
-        }
+        response: () => ({
+            body: Mobile
+        })
     },
     { 
         name: 'Not Found', 
         path: '(.*)',
-        match: {
-            response: ({ set }) => {
-                set.redirect({ name: 'Home' });
+        response: () => ({
+            redirectTo: { 
+                name: 'Home' 
             }
-        } 
+        })
     }
 ];
 
