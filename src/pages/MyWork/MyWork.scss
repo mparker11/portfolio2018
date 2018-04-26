@@ -24,7 +24,7 @@
         .project-wrapper {
             position: relative;
             width: 100%;
-            height: calc(38vw * 9 / 16);
+            height: 337px;
             margin-top: 100px;
             margin-bottom: 100px;
             opacity: 1;
@@ -35,7 +35,7 @@
             }
             .project-image {
                 position: absolute;
-                width: 38vw;
+                width: 600px;
                 height: 100%;
                 background-size: cover;
                 background-position: center;
@@ -49,7 +49,7 @@
                 .project-info {
                     position: absolute;
                     top: 0;
-                    width: calc(1024px - 38vw);
+                    width: 424px;
                     height: 121px;
                     padding: 25px;
                     background-color: $white;
@@ -76,11 +76,6 @@
                         text-align: justify;
                         font-size: 1.125rem;
                         line-height: 1.25;
-                    }
-                    @media screen and (max-width: 1440px) {
-                        .project-title {
-                            font-size: 1.5rem;
-                        }
                     }
                 }
                 .click-instructions {
@@ -157,11 +152,12 @@
             }
             &.right-side {
                 .project-image {
-                    left: 46%;
+                    left: 100%;
                     box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
-                    
+                    @include transform(translate3d(-100%, 0, 0));
+
                     .project-info {
-                        left: calc(-1 * (1024px - 38vw));
+                        left: -424px;
                         box-shadow: -5px 5px 17px 0px rgba(0, 0, 0, 0.3);
                         text-align: right;
                     }
@@ -189,9 +185,8 @@
 }
 @keyframes growVideo {
     0% { 
-        width: 38vw;
-        height: calc(38vw * 9 / 16);
-        @include transform(translate3d(0, 0, 0));
+        width: 600px;
+        height: 337px;
     }
     100% { 
         width: 1024px;
@@ -208,8 +203,7 @@
         @include transform(translate3d(-512px, -50px, 0));
     }
     100% { 
-        width: 38vw;
-        height: calc(38vw * 9 / 16);
-        @include transform(translate3d(0, 0, 0));
+        width: 600px;
+        height: 337px;
     }
 }

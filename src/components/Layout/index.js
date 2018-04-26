@@ -60,6 +60,19 @@ class Layout extends Component {
                     this.props.response.name !== 'Home' &&
                     <Footer />
                 }
+                <div className="no-less-1280">
+                    <div>
+                        <h1>Oops, you caught me!</h1>
+                        <p>
+                            Most modern screens have a resolution wider than 1280 pixels, so I didn&rsquo;t think 
+                            coding for responsiveness was necessary. 
+                            <br /><br />
+                            Please visit the site on a larger screen or drag the browser to be wider. 
+                            <br /><br />
+                            Thanks!
+                        </p>
+                    </div>
+                </div>
             </div>
         );
     }

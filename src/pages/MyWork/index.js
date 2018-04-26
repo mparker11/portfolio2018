@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import __find from 'lodash/find';
 
 import './MyWork.css';
 
@@ -7,6 +8,10 @@ import InternalLink from '../../components/InternalLink';
 import PageHeader from '../../components/PageHeader';
 import projects from './projects';
 import ReactPlayer from 'react-player';
+import Modal from 'react-modal';
+
+const { detect } = require('detect-browser');
+const browser = detect();
 
 class MyWork extends Component {
     constructor(props) {
@@ -14,7 +19,9 @@ class MyWork extends Component {
 
         this.state = {
             selectedProject: '',
-            showVideo: false
+            showVideo: false,
+            showModal: false,
+            modalVideoUrl: null
         };
 
         this.isVideoPlaying = false;
@@ -29,16 +36,25 @@ class MyWork extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.selectedProject !== this.state.selectedProject) {
-            //Chrome and Firefox
-            
-            if (this.state.selectedProject === '') {
-                this.unsetVideoSceneForGreatBrowsers(prevState.selectedProject);
+            if (browser.name !== 'safari' && browser.name !== 'edge' && browser.name !== 'ie') {
+                if (this.state.selectedProject === '') {
+                    this.unsetVideoSceneForGreatBrowsers(prevState.selectedProject);
+                } else {
+                    this.setVideoSceneForGreatBrowsers(this.state.selectedProject);
+                }
             } else {
-                this.setVideoSceneForGreatBrowsers(this.state.selectedProject);
+                this.toggleVideoModalForTerribleBrowsers(this.state.selectedProject);
             }
+        }
+    }
 
-            //Safari and Edge
-            
+    selectProject(slug) {
+        //only allowing one video to be selected at a time so it's
+        //safe to make selected explicit
+        if (this.state.selectedProject === '') {
+            this.setState({ selectedProject: slug });
+        } else {
+            this.setState({ selectedProject: '' });
         }
     }
 
@@ -54,6 +70,15 @@ class MyWork extends Component {
 
         document.querySelector(`html`).classList.add('interactive-scene');
         document.querySelector(`.page-description`).classList.add('interactive-scene');
+        document.querySelector(`#${ selectedProject } .project-image`).classList.add('watch-video');
+
+        let otherProjects = document.querySelectorAll('.project-wrapper');
+        for (let i = 0; i < otherProjects.length; i++) {
+            if (otherProjects[i].id !== selectedProject) {
+                otherProjects[i].classList.add('no-show');
+            }
+        }
+
         video.classList.add('interactive-scene');
 
         if (!this.state.showVideo) {
@@ -69,7 +94,15 @@ class MyWork extends Component {
 
         document.querySelector('html').classList.remove('interactive-scene');
         document.querySelector('.page-description').classList.remove('interactive-scene');
+        document.querySelector(`#${ selectedProject } .project-image`).classList.remove('watch-video');
         video.classList.remove('interactive-scene');
+
+        let otherProjects = document.querySelectorAll('.project-wrapper');
+        for (let i = 0; i < otherProjects.length; i++) {
+            if (otherProjects[i].id !== selectedProject) {
+                otherProjects[i].classList.remove('no-show');
+            }
+        }
 
         if (this.state.showVideo) {
             //remove the video
@@ -77,14 +110,11 @@ class MyWork extends Component {
         }
     }
 
-    selectProject(slug) {
-        //only allowing one video to be selected at a time so it's
-        //safe to make selected explicit
-        if (this.state.selectedProject === '') {
-            this.setState({ selectedProject: slug });
-        } else {
-            this.setState({ selectedProject: '' });
-        }
+    toggleVideoModalForTerribleBrowsers(project) {
+        this.setState({ 
+            showModal: project !== '',
+            modalVideoUrl: project !== '' ? (__find(projects, { slug: project })).video : null
+        });
     }
 
     render() {
@@ -105,9 +135,9 @@ class MyWork extends Component {
                         return (
                             <div key={ i } 
                                 id={ project.slug }
-                                className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' } ${ this.state.selectedProject !== '' && this.state.selectedProject !== project.slug ? 'no-show' : '' }`} 
+                                className={ `project-wrapper ${ i % 2 === 0 ? 'left-side' : 'right-side' }`} 
                             >
-                                <div className={ `project-image ${ this.state.selectedProject === project.slug ? 'watch-video' : '' }`} 
+                                <div className="project-image" 
                                     style={{ backgroundImage: `url(${ project.image })` }}
                                     onClick={ () => this.selectProject(project.slug) }
                                 >
@@ -142,6 +172,23 @@ class MyWork extends Component {
                     })
                 }
                 </div>
+                <Modal isOpen={ this.state.showModal } closeTimeoutMS={ 300 }>
+                    <div className="modal-spinner"></div>
+                    <div className="video-wrapper">
+                        <ReactPlayer 
+                            playing
+                            controls
+                            url={ this.state.modalVideoUrl }
+                            width={ 1056 }
+                            height={ 576 }
+                            playbackRate={ 1.25 }
+                            onPlay={ () => { this.isVideoPlaying = true; } }
+                            onPause={ () => { this.isVideoPlaying = false; } }
+                            onEnded={ () => { this.isVideoPlaying = false; } }
+                        />
+                    </div>
+                    <div className="video-close" onClick={ () => this.setState({ selectedProject: '' }) }>&times;</div>
+                </Modal>
             </div>
         );
     }

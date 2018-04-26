@@ -124,6 +124,106 @@ canvas {
             text-decoration: none;
         }
     }
+    .no-less-1280 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(244, 75, 66, 0.96);
+        visibility: hidden;
+        opacity: 0;
+        z-index: -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include transition(all .3s ease);
+
+        div {
+            width: 512px;
+            height: 288px;
+            text-align: center;
+            
+            h1, p {
+                color: $white;
+            }
+            p {
+                font-size: 1.5rem;
+                font-style: italic;
+            }
+        }
+        @media screen and (max-width: 1279px) {
+            z-index: 999999;
+            opacity: 1;
+            visibility: visible;
+            @include transition(all .3s ease .3s);
+        }
+    }
+}
+.ReactModal__Overlay {
+    background-color: rgba(10, 10, 10, 0.75) !important;
+    opacity: 0;
+
+    .modal-spinner {
+        opacity: 0;
+    }
+    &--after-open {
+        opacity: 1;
+        @include transition(opacity .3s ease);
+
+        .modal-spinner {
+            opacity: 1;
+        }
+    }
+    &--before-close {
+        opacity: 0;
+        
+        .modal-spinner {
+            opacity: 0;
+        }
+    }
+}
+.ReactModal__Content {
+    background: rgba(10, 10, 10, 0.75) !important;
+    padding: 0 !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    overflow: visible !important;
+    border: none !important;
+    border-radius: 15px;
+    @include transform(translate(-50%, -50%));
+
+    .modal-spinner:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        margin-top: -25px;
+        margin-left: -25px;
+        border-radius: 50%;
+        border-top: 4px solid $white;
+        border-right: 4px solid transparent;
+        animation: spinner .6s linear infinite;
+    }
+    .video-wrapper {
+        position: relative;
+    }
+    .video-close {
+        font-size: 6rem;
+        color: $white;
+        position: absolute;
+        top: -75px;
+        right: -50px;
+        cursor: pointer;
+    }
+}
+@keyframes spinner {
+    to { transform: rotate(360deg); }
 }
 @keyframes write {
     0% { opacity: 1; content: ''; }
