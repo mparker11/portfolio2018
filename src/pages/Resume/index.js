@@ -1,25 +1,44 @@
 import React, { Component } from 'react';
 import __isEmpty from 'lodash/isEmpty';
+import __find from 'lodash/find';
 
 import './Resume.css';
 
 import EmailHeader from '../../components/EmailHeader';
 import InternalLink from '../../components/InternalLink';
 import PageHeader from '../../components/PageHeader';
-import experiences from './experiences';
+import masterExperienceList from './experiences';
+import Modal from 'react-modal';
+
+const { detect } = require('detect-browser');
+const browser = detect();
 
 class Resume extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedExp: ''
+            selectedExp: '',
+            showModal: false,
+            modalExpDetails: null
         }
     }
 
-    selectExperience(name) {
-        this.setState({ selectedExp: name });
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.selectedExp !== this.state.selectedExp) {
+            if (browser.name !== 'safari' && browser.name !== 'edge' && browser.name !== 'ie') {
+                if (!__isEmpty(this.state.selectedExp)) {
+                    this.selectExperienceForGreatBrowsers();
+                } else {
+                    this.deselectExperienceForGreatBrowsers();
+                }
+            } else {
+                this.toggleExperienceForTerribleBrowsers(this.state.selectedExp);
+            }
+        }
+    }
 
+    selectExperienceForGreatBrowsers() {
         //center the scroll at the experiences div
         let offset = document.querySelector('.experiences-container').offsetTop;
         window.scroll({
@@ -29,6 +48,15 @@ class Resume extends Component {
 
         document.querySelector('html').classList.add('interactive-scene');
         document.querySelector('.center-gravity').classList.add('interactive-scene');
+
+        let allExperiences = document.querySelectorAll('.experience');
+        for (let i = 0; i < allExperiences.length; i++) {
+            if (allExperiences[i].dataset.name === this.state.selectedExp) {
+                allExperiences[i].classList.add('selected');
+            } else {
+                allExperiences[i].classList.add('not-selected');
+            }
+        }
         
         let nonInteractives = document.querySelectorAll('.no-interactive');
         for (let i = 0; i < nonInteractives.length; i++) {
@@ -36,19 +64,31 @@ class Resume extends Component {
         }
     }
     
-    deselectExperience() {
-        this.setState({ selectedExp: '' });
+    deselectExperienceForGreatBrowsers() {
         document.querySelector('html').classList.remove('interactive-scene');
         document.querySelector('.center-gravity').classList.remove('interactive-scene');
         
+        let allExperiences = document.querySelectorAll('.experience');
+        for (let i = 0; i < allExperiences.length; i++) {
+            allExperiences[i].classList.remove('selected');
+            allExperiences[i].classList.remove('not-selected');
+        }
+
         let nonInteractives = document.querySelectorAll('.no-interactive');
         for (let i = 0; i < nonInteractives.length; i++) {
             nonInteractives[i].classList.remove('interactive-scene');
         }
     }
+
+    toggleExperienceForTerribleBrowsers(experience) {
+        this.setState({ 
+            showModal: experience !== '',
+            modalExpDetails: experience !== '' ? (__find(masterExperienceList, { name: experience })) : null
+        });
+    }
     
     render() {
-        let { selectedExp } = this.state;
+        let { selectedExp, modalExpDetails } = this.state;
 
         return (
             <div className="resume-page page">
@@ -86,12 +126,12 @@ class Resume extends Component {
                 <div className="experiences-container">
                     <div className="center-gravity">
                         {
-                            experiences.map((experience, i) => {
+                            masterExperienceList.map((experience, i) => {
                                 return (
                                     <div key={ i }>
                                         <div data-name={ experience.name } 
-                                            className={ `experience ${ selectedExp === experience.name ? 'selected' : !__isEmpty(selectedExp) ? 'not-selected' : '' }` }
-                                            onClick={ () => this.selectExperience(experience.name) }
+                                            className="experience"
+                                            onClick={ () => this.setState({ selectedExp: experience.name }) }
                                         >
                                             <div className="details-container">
                                                 <img alt={ experience.fullname } src={ experience.logoSrc } />
@@ -102,7 +142,7 @@ class Resume extends Component {
                                 )
                             })
                         }
-                        <div className="experience-close" onClick={ () => this.deselectExperience() }>&times;</div>
+                        <div className="experience-close" onClick={ () => this.setState({ selectedExp: '' }) }>&times;</div>
                     </div>
                 </div>
                 <div className="divider no-interactive"></div>
@@ -117,6 +157,24 @@ class Resume extends Component {
                         <p>Bachelor of Science<br />Computer Science<br />Cum Laude, 2010</p>
                     </div>
                 </div>
+                <Modal 
+                    isOpen={ this.state.showModal } 
+                    closeTimeoutMS={ 300 }
+                    style={{
+                        content: {
+                            backgroundColor: 'rgba(240, 240, 240, 0.95)'
+                        }
+                    }}
+                >
+                    {
+                        !__isEmpty(modalExpDetails) &&
+                        <div className="details-container">
+                            <img alt={ modalExpDetails.fullname } src={ modalExpDetails.logoSrc } />
+                            <div className="detailed-content" dangerouslySetInnerHTML={{ __html: modalExpDetails.details }}></div>
+                        </div>
+                    }
+                    <div className="video-close" onClick={ () => this.setState({ selectedExp: '' }) }>&times;</div>
+                </Modal>
             </div>
         );
     }

@@ -184,7 +184,6 @@ canvas {
     }
 }
 .ReactModal__Content {
-    background: rgba(10, 10, 10, 0.75) !important;
     padding: 0 !important;
     top: 50% !important;
     left: 50% !important;
@@ -220,6 +219,20 @@ canvas {
         top: -75px;
         right: -50px;
         cursor: pointer;
+    }
+    .details-container {
+        padding: 20px;
+        text-align: center;
+
+        img {
+            width: 50%;
+            max-width: 250px;
+            max-height: 100px;
+            margin-bottom: 15px;
+        }
+        .detailed-content {
+            text-align: left;
+        }
     }
 }
 @keyframes spinner {

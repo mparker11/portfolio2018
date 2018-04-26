@@ -181,12 +181,12 @@
                     @include transition(opacity .1s ease 0s);
                 }
                 &.selected {
-                    top: calc(100vh * -0.35);
+                    top: 50%;
                     left: 50%;
                     width: 750px;
                     height: 525px;
                     will-change: top, left, width, height;
-                    @include transform(rotate(0) translateX(-50%));
+                    @include transform(rotate(0) translate(-50%, -40%));
                     @include transition(
                         top .5s ease .05s,
                         left .5s ease .05s,
@@ -209,9 +209,6 @@
                             pointer-events: all;
                             @include transition(opacity .3s ease .6s);
                         }
-                    }
-                    @media screen and (min-height: 800px) {
-                        top: calc(100vh * -0.25);
                     }
                 }
                 &:hover:not(.selected) {
@@ -244,15 +241,11 @@
                 font-size: 6rem;
                 color: $white;
                 position: absolute;
-                top: calc(100vh * -0.35 - 70px);
-                left: calc(50% + 375px);
+                top: -285px;
+                left: calc(50% + 370px);
                 opacity: 0;
                 pointer-events: none;
                 @include transition(opacity .1s ease);
-
-                @media screen and (min-height: 800px) {
-                    top: calc(100vh * -0.25 - 70px);
-                }
             }
             &.interactive-scene {
                 .experience-close {

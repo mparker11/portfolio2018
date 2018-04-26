@@ -172,7 +172,15 @@ class MyWork extends Component {
                     })
                 }
                 </div>
-                <Modal isOpen={ this.state.showModal } closeTimeoutMS={ 300 }>
+                <Modal 
+                    isOpen={ this.state.showModal } 
+                    closeTimeoutMS={ 300 }
+                    style={{
+                        content: {
+                            backgroundColor: 'rgba(10, 10, 10, 0.75)'
+                        }
+                    }}
+                >
                     <div className="modal-spinner"></div>
                     <div className="video-wrapper">
                         <ReactPlayer 
