@@ -29,7 +29,7 @@ class Mobile extends Component {
                         having a blessed day!
                     </p>
                 </div>
-                <a className="mobile-button" target="_blank" href="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/files%2FMartavisResume2018.pdf?alt=media&token=69d5280b-9992-406e-875d-ff3edc2a1966">View Resume</a>
+                <a className="mobile-button" target="_blank" rel="noopener noreferrer" href="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/files%2FMartavisResume2018.pdf?alt=media&token=69d5280b-9992-406e-875d-ff3edc2a1966">View Resume</a>
             </div>
         );
     }

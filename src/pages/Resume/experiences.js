@@ -30,11 +30,11 @@ const experiences = [
     },
     {
         name: 'accuagency',
-        fullname: 'Assurance Systems, Incorporated',
+        fullname: 'Assurance Systems, Inc.',
         logoSrc: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Faccuagency_logo.svg?alt=media&token=dcb7b10a-01f9-4fe3-9855-9293802ba7c3',
         details: `
             <div class="intro">
-                <p class="company">Assurance Systems, Incorporated</p>
+                <p class="company">Assurance Systems, Inc.</p>
                 <p class="dates">July 2011 - September 2013</p>
             </div>
             <p class="synopsis">
@@ -83,11 +83,11 @@ const experiences = [
     },
     {
         name: 'codespark',
-        fullname: 'codeSpark, Incorporated',
+        fullname: 'codeSpark, Inc.',
         logoSrc: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2FcodeSpark_logo.svg?alt=media&token=38f29f8a-fa5d-4db4-971f-69d642c9468d',
         details: `
             <div class="intro">
-                <p class="company">codeSpark, Incorporated</p>
+                <p class="company">codeSpark, Inc.</p>
                 <p class="dates">March 2017 - Present</p>
             </div>
             <p class="synopsis">
@@ -133,7 +133,7 @@ const experiences = [
                 <ul>
                     <li>Built website for world-renowned gaming company, Square Enix, to accompany the 2016 release of Hitman&trade;</li>
                     <li>Completed kiosk app which was showcased at the CES, &ldquo;the world&rsquo;s gathering place for all who thrive on the business of consumer technologies&rdquo;</li>
-                    <li>Started Auratic Development, LLC &mdash; Est. 2018</li>
+                    <li>Commenced Auratic Development, LLC &mdash; Est. 2018</li>
                 </ul>
             </div>
         `

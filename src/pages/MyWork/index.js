@@ -28,10 +28,13 @@ class MyWork extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.response)
         import('react-scroll').then((Scroll) => {
             this.scroll = Scroll.animateScroll;
         });
+
+        setTimeout(() => {
+            document.querySelector('.work-container').classList.add('loaded');
+        }, 350);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -158,7 +161,7 @@ class MyWork extends Component {
                                             playing
                                             controls
                                             url={ project.video } 
-                                            width={ 1056 }
+                                            width={ 1024 }
                                             height={ 576 }
                                             playbackRate={ 1.25 }
                                             onPlay={ () => { this.isVideoPlaying = true; } }
@@ -187,7 +190,7 @@ class MyWork extends Component {
                             playing
                             controls
                             url={ this.state.modalVideoUrl }
-                            width={ 1056 }
+                            width={ 1024 }
                             height={ 576 }
                             playbackRate={ 1.25 }
                             onPlay={ () => { this.isVideoPlaying = true; } }

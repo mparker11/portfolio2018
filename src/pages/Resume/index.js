@@ -24,6 +24,15 @@ class Resume extends Component {
         this.browser = props.response.data.browser;
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            let skills = document.querySelectorAll('.skill');
+            for (let i = 0; i < skills.length; i++) {
+                skills[i].classList.add('loaded');
+            }
+        }, 350);
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevState.selectedExp !== this.state.selectedExp) {
             if (this.browser.name !== 'safari' && this.browser.name !== 'edge' && this.browser.name !== 'ie') {
@@ -156,6 +165,13 @@ class Resume extends Component {
                         <img alt="" src="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fexperiences%2Fcum_laude.svg?alt=media&token=4a81218b-8d6f-487a-aaa9-29c49b535074" />
                         <p>Bachelor of Science<br />Computer Science<br />Cum Laude, 2010</p>
                     </div>
+                </div>
+                <div className="hardcopy-section">
+                    <p>Need a hardcopy?</p>
+                    <a className="resume-button" target="_blank" rel="noopener noreferrer" 
+                        href="https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/files%2FMartavisResume2018.pdf?alt=media&token=69d5280b-9992-406e-875d-ff3edc2a1966">
+                        <span>Download</span>
+                    </a>
                 </div>
                 <Modal 
                     isOpen={ this.state.showModal } 

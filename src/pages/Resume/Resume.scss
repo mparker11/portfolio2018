@@ -18,7 +18,27 @@
 
         .skill {
             text-align: center;
+            opacity: 0;
+            @include transition(opacity .3s ease);
 
+            &:nth-child(1) {
+                transition-delay: 0s;
+            }
+            &:nth-child(2) {
+                transition-delay: .2s;
+            }
+            &:nth-child(3) {
+                transition-delay: .4s;
+            }
+            &:nth-child(4) {
+                transition-delay: .6s;
+            }
+            &:nth-child(5) {
+                transition-delay: .8s;
+            }
+            &:nth-child(6) {
+                transition-delay: 1s;
+            }
             &:not(:last-child) {
                 margin-right: 50px;
             }
@@ -27,6 +47,9 @@
             }
             p {
                 margin: 8px 0 0;
+            }
+            &.loaded {
+                opacity: 1;
             }
         }
     }
@@ -70,6 +93,7 @@
                     position: relative;
                     width: 100%;
                     height: 100%;
+                    transform-origin: 50%  51%;
                     @include transition(all .5s ease .1s);
                     @include transform(rotate(-45deg));
         
@@ -144,7 +168,7 @@
                     left: 343px;
     
                     img {
-                        max-height: 125px; 
+                        max-height: 150px; 
                     }
                 }
                 &[data-name="codespark"] {
@@ -289,14 +313,82 @@
                 
                 img {
                     max-width: 70%;
-                    transform-origin: bottom;
-                    @include transform(rotate(-45deg));
+                    transform-origin: 51% 51%;
+                    position: relative;
+                    left: -30px;
+                    top: 10px;
+                    @include transform(rotate(-45deg) translateZ(0));
                 }
                 p {
                     position: relative;
-                    left: 15px;
-                    transform-origin: top;
-                    @include transform(rotate(-45deg));
+                    left: 30px;
+                    top: -7px;
+                    transform-origin: 53% 50%;
+                    @include transform(rotate(-45deg) translateZ(0));
+                }
+            }
+        }
+    }
+    .hardcopy-section {
+        margin: 75px 0 30px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-size: 1.5rem;
+            line-height: 1;
+            margin: 0;
+        }
+        .resume-button {
+            display: block;
+            width: 180px;
+            height: 50px;
+            margin-left: 20px;
+            font-size: 1.125rem;
+            line-height: 1;
+            border-width: 2px;
+            border-style: solid;
+            -webkit-border-image: linear-gradient(#c2e59c, #64b3f4) 10;
+            border-image: linear-gradient(#c2e59c, #64b3f4) 10;
+            text-align: center;
+            text-transform: uppercase;
+            overflow: hidden;
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+            @include transition(all .3s ease);
+    
+            span {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 50%;
+                text-align: center;
+                z-index: 1;
+                @include transform(translateY(-50%));
+                @include transition(all .3s ease);
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 120%;
+                left: -10%;
+                bottom: 0;
+                background: linear-gradient(#c2e59c, #64b3f4);
+                z-index: 0;
+                @include transform(skewX(15deg));
+                @include transition(all .3s ease);
+            }
+            &:hover {
+                
+                span {
+                    color: $white;
+                }
+                &::before {
+                    width: 120%;
                 }
             }
         }

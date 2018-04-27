@@ -20,7 +20,12 @@
         width: 75%;
         min-width: 1024px;
         margin: 50px auto 0;
+        opacity: 0;
+        @include transition(opacity .3s ease);
 
+        &.loaded {
+            opacity: 1;   
+        }
         .project-wrapper {
             position: relative;
             width: 100%;
@@ -120,11 +125,16 @@
                 position: absolute;
                 top: 0;
                 left: 50%;
-                width: 1056px;
+                width: 1024px;
                 height: 576px;
                 opacity: 0;
                 @include transition(opacity .1s ease .3s);
                 @include transform(translate(-50%, -50px));
+
+                video {
+                    background-color: #000;
+                    border-radius: 6px;
+                }
             }
             &:hover {
                 .project-info {

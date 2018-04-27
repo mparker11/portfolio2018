@@ -101,7 +101,7 @@ canvas {
         }
     }
     .page {
-        &:not(.mobile-page) {
+        &:not(.mobile-page):not(.home-page) {
             padding-left: 75px;
             padding-right: 75px;
             padding-bottom: 75px;

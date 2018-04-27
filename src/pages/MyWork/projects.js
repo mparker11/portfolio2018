@@ -4,7 +4,7 @@ const projects = [
         slug: 'analog-devices',
         year: '2018',
         image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/images%2Fclients%2Fad_logo.jpg?alt=media&token=e9514dae-2375-4ae3-b55b-120299c7f42c',
-        video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FAD_screen_grab.mp4?alt=media&token=8938ddfa-db25-489b-9130-5fde98d89398',
+        video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v7.appspot.com/o/videos%2FAD_demo.mp4?alt=media&token=f4856fbe-aa68-4039-aac9-345b02f431e5',
         description: `Four weeks of intense coding produced the featured kiosk app built for the infamous CES showcase, 
                     designed by Analog Devices in order to highlight the industries in which the company creates its tech.`
     },
