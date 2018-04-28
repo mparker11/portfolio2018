@@ -51,6 +51,13 @@ class MyWork extends Component {
         }
     }
 
+    componentWillUnmount() {
+        delete this.scroll;
+        delete this.isVideoPlaying;
+        delete this.scroll;
+        delete this.browser;
+    }
+
     selectProject(slug) {
         //only allowing one video to be selected at a time so it's
         //safe to make selected explicit

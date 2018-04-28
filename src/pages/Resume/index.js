@@ -47,6 +47,10 @@ class Resume extends Component {
         }
     }
 
+    componentWillUnmount() {
+        delete this.browser;
+    }
+
     selectExperienceForGreatBrowsers() {
         //center the scroll at the experiences div
         let offset = document.querySelector('.experiences-container').offsetTop;

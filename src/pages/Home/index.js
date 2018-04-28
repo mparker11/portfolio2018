@@ -8,6 +8,7 @@ class Home extends Component {
         super(props);
 
         this.animate = this.animate.bind(this);
+        this.animationRequest = null;
     }
 
     componentDidMount() {
@@ -29,6 +30,19 @@ class Home extends Component {
 
     componentWillUnmount() {
         document.body.removeChild(this.renderer.view);
+        cancelAnimationFrame(this.animationRequest);
+        delete this.PIXI;
+        delete this.width;
+        delete this.height;
+        delete this.animationCount;
+        delete this.cbc;
+        delete this.cbd;
+        delete this.sr;
+        delete this.sb;
+        delete this.sg;
+        delete this.renderer;
+        delete this.stage;
+        delete this.smokeShader;
     }
 
     renderBackground() {
@@ -64,7 +78,7 @@ class Home extends Component {
     }
 
     animate() {
-        requestAnimationFrame(this.animate);
+        this.animationRequest = requestAnimationFrame(this.animate);
         this.renderer.render(this.stage);
 
         this.animationCount += 0.08;
